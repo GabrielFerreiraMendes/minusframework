@@ -176,10 +176,16 @@ jobs:
           if-no-files-found: error
 
       # ── Run tests ──────────────────────────────────────────────────────
+      - name: Start Docker test databases
+        shell: powershell
+        working-directory: meta\ORM
+        run: docker compose up -d --wait
+        continue-on-error: true
+
       - name: Run ORM tests
         shell: powershell
         working-directory: meta\ORM
-        run: ./run-tests.ps1 -Config ${{ matrix.config }} -Platform ${{ matrix.platform }} -SkipDocker
+        run: ./run-tests.ps1 -Config ${{ matrix.config }} -Platform ${{ matrix.platform }}
         continue-on-error: true
 
       - name: Run Migrator tests
