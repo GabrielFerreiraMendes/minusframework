@@ -1,8 +1,0 @@
-*.dproj.local
-*.identcache
-*.dcu
-__dcu/
-*.exe
-*.map
-*.drc
-Bin/
