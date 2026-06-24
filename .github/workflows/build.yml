@@ -20,8 +20,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: meta
-          submodules: recursive
-          token: ${{ secrets.GH_PAT }}
+
+      - name: Init private submodules
+        shell: powershell
+        working-directory: meta
+        run: .\setup-dev.ps1 -Token ${{ secrets.GH_PAT }}
 
       # ── Telemetry ──────────────────────────────────────────────────────
       - name: Build Telemetry_Runtime

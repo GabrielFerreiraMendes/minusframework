@@ -32,14 +32,20 @@ Um ecossistema de bibliotecas Delphi para construir aplicações corporativas mo
 
 [⬇️ Baixe o instalador](https://github.com/GabrielFerreiraMendes/minusframework-meta/releases/latest) (Community Edition)
 
-Ou instale manualmente:
-1. Clone o repositório (sem submódulos — eles são privados):
-   ```
-   git clone https://github.com/GabrielFerreiraMendes/minusframework-meta.git
-   ```
-2. Abra o `.groupproj` no RAD Studio
-3. Compile o package **MinusFramework_Runtime**
-4. Adicione as pastas `Source\` ao Library Path do seu projeto
+Ou instale manualmente (só o instalador — o fonte é privado):
+
+```
+git clone https://github.com/GabrielFerreiraMendes/minusframework-meta.git
+```
+
+> ⚠️ Os submódulos com o código-fonte são **privados**. O clone público traz apenas a documentação e placeholders. Para obter acesso ao código, entre em contato.
+
+Se você é um **mantenedor** com acesso, use:
+```
+git clone https://github.com/GabrielFerreiraMendes/minusframework-meta.git
+cd minusframework-meta
+.\setup-dev.ps1 -Token ghp_xxxx
+```
 
 ### CRUD em 3 minutos
 
