@@ -23,6 +23,7 @@ Um ecossistema de bibliotecas Delphi para construir aplicações corporativas mo
 | **MinusMessaging** | Message bus multi-provider com retry, circuit breaker, sagas e outbox | ✅ MIT |
 | **MinusTelemetry** | Tracing e logging estruturado OpenTelemetry-style | ✅ MIT |
 | **MinusExtensions** | Wrappers para Horse, JWT e bibliotecas de terceiros | ✅ MIT |
+| **MinusAI** | Agentes inteligentes e servidor MCP para o ecossistema | ✅ MIT |
 
 ---
 
@@ -199,6 +200,7 @@ A Community Edition cobre todas as features essenciais. A Enterprise adiciona pr
 | [📗 Roadmap](Docs/ROADMAP.md) | Próximos passos e planejamento |
 | [📕 Changelog](Docs/CHANGELOG.md) | Histórico de versões |
 | [🤝 Contribuindo](Docs/CONTRIBUTING.md) | Como contribuir (em breve) |
+| [🗺️ Roadmap](ROADMAP.md) | O que vem por aí |
 | [📊 Crowdfunding](Docs/ESTRATEGIA_CROWDFUNDING.md) | Apoie o projeto |
 | [📋 Monorepo vs Submodules](Docs/monorepo_vs_submodules.md) | Decisão arquitetural |
 
