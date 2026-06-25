@@ -29,18 +29,16 @@ O MinusFrameWork é um ecossistema de bibliotecas Delphi para criar aplicações
 
 ## Planos
 
-| Recurso | Free | Pro | Enterprise |
-|---------|------|-----|------------|
-| Core Runtime | Sim | Sim | Sim |
-| ORM (DLL) | Limitado | Completo | Completo |
-| MinusMigrator CLI | Sim | Sim | Sim |
-| MinusMigrator GUI | — | Sim | Sim |
-| MinusFeatureFlags | — | Sim | Sim |
-| MinusMessaging | — | Sim | Sim |
-| MinusTelemetry | — | Sim | Sim |
-| MinusAI | — | Sim | Sim |
-| Projetos demonstrativos (.pas) | Sim | Sim | Sim |
-| Suporte | — | Email | Prioritário |
+| Recurso | Free |
+|---------|------|
+| Core Runtime | Sim |
+| ORM (DLL) | Limitado |
+| MinusMigrator CLI | Sim |
+| MinusMessaging CLI | Sim |
+| MinusAI | Sim |
+| Projetos demonstrativos (.pas) | Sim |
+
+Planos **Pro** e **Enterprise** com módulos completos e suporte estarão disponíveis em breve.
 
 ---
 
