@@ -1,0 +1,22 @@
+name: Deploy Module
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        required: true
+      tag:
+        required: true
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: meta
+
+      - shell: powershell
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: meta\ci-setup.ps1 -Token $env:GH_PAT
