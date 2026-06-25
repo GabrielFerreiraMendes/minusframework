@@ -78,7 +78,14 @@ Dúvidas, sugestões ou orçamentos para planos Pro/Enterprise:
 
 Se o MinusFrameWork é útil para você, considere apoiar o projeto com uma doação via PIX.
 
-**Chave PIX:** `4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2`
+<details>
+<summary><b>&#x1F911; Clique para revelar a chave PIX</b></summary>
+<p>
+
+Chave: <code>4214 aaa8 d6d1 4d01 81c1 7a08 35fd c5b2</code>
+
+</p>
+</details>
 
 ---
 
