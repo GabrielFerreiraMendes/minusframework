@@ -41,38 +41,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "checkout failed" }
 
       - shell: powershell
-        env:
-          BDS: 'C:\Program Files (x86)\Embarcadero\Studio\23.0'
-          BDSINCLUDE: 'C:\Program Files (x86)\Embarcadero\Studio\23.0\include'
-          FrameworkDir: 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319'
         run: |
-          $msbuild = if (Get-Command msbuild -ErrorAction SilentlyContinue) { "msbuild" } else { 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe' }
-          $m = "${{ inputs.repo }}"
-          $d = switch ($m) {
-            "minusframework-core"         { "Core" }
-            "minusframework-orm"          { "ORM" }
-            "minusframework-migrator"     { "Migrator" }
-            "minusframework-featureflags" { "FeatureFlags" }
-            "minusframework-messaging"    { "Messaging" }
-            "minusframework-telemetry"    { "Telemetry" }
-            "minusframework-extensions"   { "Extensions" }
-            "minusframework-ai"           { "AI" }
-          }
-          $projects = switch ($m) {
-            "minusframework-core"         { @("meta\$d\Packages\MinusFramework_Runtime.dproj", "meta\$d\Packages\MinusFramework_Design.dproj") }
-            "minusframework-orm"          { @("meta\$d\MinusORM.dproj") }
-            "minusframework-migrator"     { @("meta\$d\MinusMigrator_DLL.dproj", "meta\$d\MinusMigrator_CLI.dproj", "meta\$d\MinusMigrator_GUI.dproj") }
-            "minusframework-featureflags" { @("meta\$d\FeatureFlags\MinusFeatureFlags.dproj", "meta\$d\FeatureFlags\API\MinusFeatureFlagsAPI.dproj") }
-            "minusframework-messaging"    { @("meta\$d\Packages\MinusMessaging_Runtime.dproj", "meta\$d\Packages\MinusMessaging_Design.dproj", "meta\$d\MinusMessaging_CLI.dproj") }
-            "minusframework-telemetry"    { @("meta\$d\Packages\MinusTelemetry_Runtime.dproj") }
-            "minusframework-extensions"   { @() }
-            "minusframework-ai"           { @("meta\$d\Source\MinusAI_MCP.dproj") }
-          }
-          foreach ($proj in $projects) {
-            Write-Host "Building $proj..."
-            & $msbuild $proj /p:Config=Release /p:Platform=Win32
-            if ($LASTEXITCODE -ne 0) { throw "msbuild failed for $proj" }
-          }
+          & "${{ github.workspace }}\meta\Installer\build-module-bds.ps1" -Module "${{ inputs.repo }}" -RootDir "${{ github.workspace }}\meta"
 
       - shell: powershell
         env:

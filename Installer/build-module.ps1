@@ -53,7 +53,7 @@ New-Item -ItemType Directory -Force -Path $stageDir | Out-Null
 
 $bplDir = "$env:PUBLIC\Documents\Embarcadero\Studio\23.0\Bpl"
 $dcpDir = "$env:PUBLIC\Documents\Embarcadero\Studio\23.0\Dcp"
-$outDir = "$RootDir\$ModuleDir\Win32\Release"
+$outDir = "$RootDir\$ModuleDir\Win32\Debug"
 
 switch ($Module) {
     "minusframework-core" {
