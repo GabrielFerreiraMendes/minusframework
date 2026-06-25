@@ -41,10 +41,6 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "checkout failed" }
 
       - shell: powershell
-        run: |
-          & "${{ github.workspace }}\meta\Installer\build-module-bds.ps1" -Module "${{ inputs.repo }}" -RootDir "${{ github.workspace }}\meta"
-
-      - shell: powershell
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |

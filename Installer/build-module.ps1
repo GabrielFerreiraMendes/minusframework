@@ -51,54 +51,52 @@ try {
 $stageDir = Join-Path $RootDir "stage"
 New-Item -ItemType Directory -Force -Path $stageDir | Out-Null
 
-$bplDir = "$env:PUBLIC\Documents\Embarcadero\Studio\23.0\Bpl"
-$dcpDir = "$env:PUBLIC\Documents\Embarcadero\Studio\23.0\Dcp"
-$outDir = "$RootDir\$ModuleDir\Win32\Debug"
+$prebuiltDir = "$RootDir\$ModuleDir\Prebuilt"
 
 switch ($Module) {
     "minusframework-core" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp" | Out-Null
-        Copy-Item "$bplDir\MinusFramework_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
-        Copy-Item "$bplDir\MinusFramework_Design.bpl"  "$stageDir\Bpl\" -ErrorAction Stop
-        Copy-Item "$dcpDir\MinusFramework_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
-        Copy-Item "$dcpDir\MinusFramework_Design.dcp"  "$stageDir\Dcp\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bpl\MinusFramework_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bpl\MinusFramework_Design.bpl"  "$stageDir\Bpl\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Dcp\MinusFramework_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Dcp\MinusFramework_Design.dcp"  "$stageDir\Dcp\" -ErrorAction Stop
     }
     "minusframework-telemetry" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp" | Out-Null
-        Copy-Item "$bplDir\MinusTelemetry_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
-        Copy-Item "$dcpDir\MinusTelemetry_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bpl\MinusTelemetry_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Dcp\MinusTelemetry_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
     }
     "minusframework-messaging" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp", "$stageDir\Bin" | Out-Null
-        Copy-Item "$bplDir\MinusMessaging_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
-        Copy-Item "$bplDir\MinusMessaging_Design.bpl"   "$stageDir\Bpl\" -ErrorAction Stop
-        Copy-Item "$dcpDir\MinusMessaging_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
-        Copy-Item "$dcpDir\MinusMessaging_Design.dcp"   "$stageDir\Dcp\" -ErrorAction Stop
-        Copy-Item "$outDir\MinusMessaging_CLI.exe"      "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bpl\MinusMessaging_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bpl\MinusMessaging_Design.bpl"   "$stageDir\Bpl\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Dcp\MinusMessaging_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Dcp\MinusMessaging_Design.dcp"   "$stageDir\Dcp\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusMessaging_CLI.exe"      "$stageDir\Bin\" -ErrorAction Stop
     }
     "minusframework-orm" {
-        New-Item -ItemType Directory -Force -Path "$stageDir\Bin" | Out-Null
-        Copy-Item "$outDir\MinusORM.dll" "$stageDir\Bin\" -ErrorAction Stop
+        New-Item -ItemType Directory -Force -Path "$stageDir\Bin", "$stageDir\Samples" | Out-Null
+        Copy-Item "$prebuiltDir\Bin\MinusORM.dll" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Samples\*.pas" "$stageDir\Samples\" -ErrorAction SilentlyContinue
+        Copy-Item "$prebuiltDir\Samples\*.dfm" "$stageDir\Samples\" -ErrorAction SilentlyContinue
     }
     "minusframework-migrator" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bin" | Out-Null
-        Copy-Item "$outDir\MinusMigrator_DLL.dll" "$stageDir\Bin\" -ErrorAction Stop
-        Copy-Item "$outDir\MinusMigrator_CLI.exe" "$stageDir\Bin\" -ErrorAction Stop
-        Copy-Item "$outDir\MinusMigrator_GUI.exe" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusMigrator_DLL.dll" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusMigrator_CLI.exe" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusMigrator_GUI.exe" "$stageDir\Bin\" -ErrorAction Stop
     }
     "minusframework-featureflags" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bin" | Out-Null
-        Copy-Item "$outDir\MinusFeatureFlags.exe"    "$stageDir\Bin\" -ErrorAction Stop
-        Copy-Item "$outDir\MinusFeatureFlagsAPI.exe" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusFeatureFlags.exe"    "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusFeatureFlagsAPI.exe" "$stageDir\Bin\" -ErrorAction Stop
     }
     "minusframework-ai" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bin" | Out-Null
-        Copy-Item "$outDir\MinusAI_MCP.exe" "$stageDir\Bin\" -ErrorAction Stop
+        Copy-Item "$prebuiltDir\Bin\MinusAI_MCP.exe" "$stageDir\Bin\" -ErrorAction Stop
     }
     "minusframework-extensions" {
-        New-Item -ItemType Directory -Force -Path "$stageDir\Source" | Out-Null
-        Copy-Item "$RootDir\$ModuleDir\Source\*.pas" "$stageDir\Source\" -ErrorAction SilentlyContinue
-        Copy-Item "$RootDir\$ModuleDir\Source\*.dfm" "$stageDir\Source\" -ErrorAction SilentlyContinue
+        # Extensions: no compiled output, no source distribution
     }
 }
 

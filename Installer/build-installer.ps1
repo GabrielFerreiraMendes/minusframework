@@ -35,7 +35,7 @@ Write-Host "========================================" -ForegroundColor Cyan
 # Clean staging
 Write-Host "`n[1/4] Limpando staging..." -ForegroundColor Yellow
 if (Test-Path $StagingDir) { Remove-Item -Recurse -Force $StagingDir }
-@("Bpl","Dcp","Bin","Source","Docs","Samples") | ForEach-Object {
+@("Bpl","Dcp","Bin","Docs","Samples") | ForEach-Object {
     New-Item -ItemType Directory -Force -Path (Join-Path $StagingDir $_) | Out-Null
 }
 
@@ -127,11 +127,9 @@ function Get-ReleaseZip {
 foreach ($mod in $Modules) {
     Write-Host "`n  --- $mod ---" -ForegroundColor Cyan
     
-    $modStage = Join-Path $StagingDir "Source\$mod"
-    New-Item -ItemType Directory -Force -Path $modStage | Out-Null
-    
-    # Download source zip
-    Get-ReleaseZip -Repo $mod -DestDir $modStage | Out-Null
+    # Download Samples (.pas/.dfm from demo projects)
+    Get-ReleaseAsset -Repo $mod -AssetName "*.pas" -DestDir (Join-Path $StagingDir "Samples") | Out-Null
+    Get-ReleaseAsset -Repo $mod -AssetName "*.dfm" -DestDir (Join-Path $StagingDir "Samples") | Out-Null
     
     # Download BPLs
     Get-ReleaseAsset -Repo $mod -AssetName "*.bpl" -DestDir (Join-Path $StagingDir "Bpl") | Out-Null
