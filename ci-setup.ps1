@@ -26,19 +26,18 @@ $RepoDirs = @{
     "minusframework-ai"           = "AI"
 }
 
-$gitOpts = if ($Token) { @("-c", "http.extraheader=AUTHORIZATION: bearer $Token") } else { @() }
-
 foreach ($repo in $Repos) {
     $dest = Join-Path $Root $RepoDirs[$repo]
+    $repoUrl = if ($Token) { "https://GabrielFerreiraMendes:$Token@github.com/GabrielFerreiraMendes/$repo.git" } else { "$AuthUrl/$repo.git" }
     if (-not (Test-Path $dest)) {
         Write-Host "Cloning $repo..."
-        & git @gitOpts clone "$AuthUrl/$repo.git" $dest 2>&1
+        git clone $repoUrl $dest
         if ($LASTEXITCODE -ne 0) { throw "git clone failed for $repo" }
     } else {
         Write-Host "Updating $repo..."
-        & git @gitOpts -C $dest fetch origin 2>&1
+        git -C $dest fetch origin
         if ($LASTEXITCODE -ne 0) { throw "git fetch failed for $repo" }
-        git -C $dest reset --hard origin/main 2>&1
+        git -C $dest reset --hard origin/main
         if ($LASTEXITCODE -ne 0) { throw "git reset failed for $repo" }
     }
 }
