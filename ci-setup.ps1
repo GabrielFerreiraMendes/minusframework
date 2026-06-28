@@ -2,42 +2,22 @@ param([string]$Token)
 
 $ErrorActionPreference = "Stop"
 $Root = $PSScriptRoot
-$AuthUrl = "https://github.com/GabrielFerreiraMendes"
 
-$Repos = @(
-    "minusframework-telemetry",
-    "minusframework-messaging",
-    "minusframework-core",
-    "minusframework-orm",
-    "minusframework-migrator",
-    "minusframework-featureflags",
-    "minusframework-extensions",
-    "minusframework-ai"
-)
-
-$RepoDirs = @{
-    "minusframework-telemetry"    = "Telemetry"
-    "minusframework-messaging"    = "Messaging"
-    "minusframework-core"         = "Core"
-    "minusframework-orm"          = "ORM"
-    "minusframework-migrator"     = "Migrator"
-    "minusframework-featureflags" = "FeatureFlags"
-    "minusframework-extensions"   = "Extensions"
-    "minusframework-ai"           = "AI"
-}
-
-foreach ($repo in $Repos) {
-    $dest = Join-Path $Root $RepoDirs[$repo]
-    $repoUrl = if ($Token) { "https://GabrielFerreiraMendes:$Token@github.com/GabrielFerreiraMendes/$repo.git" } else { "$AuthUrl/$repo.git" }
-    if (-not (Test-Path $dest)) {
-        Write-Host "Cloning $repo..."
-        git clone $repoUrl $dest
-        if ($LASTEXITCODE -ne 0) { throw "git clone failed for $repo" }
-    } else {
-        Write-Host "Updating $repo..."
-        git -C $dest fetch origin
-        if ($LASTEXITCODE -ne 0) { throw "git fetch failed for $repo" }
-        git -C $dest reset --hard origin/main
-        if ($LASTEXITCODE -ne 0) { throw "git reset failed for $repo" }
+if ($Token) {
+    $escapedToken = [Uri]::EscapeDataString($Token)
+    git -C $Root submodule update --init --recursive 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Submodule update failed. Retrying with auth..." -ForegroundColor Yellow
+        $configPath = "$Root\.gitmodules"
+        $content = Get-Content $configPath -Raw
+        $content = $content -replace 'https://github\.com/',"https://GabrielFerreiraMendes:${escapedToken}@github.com/"
+        $content | Set-Content $configPath -NoNewline
+        git -C $Root submodule update --init --recursive 2>&1
+        $exitCode = $LASTEXITCODE
+        git -C $Root checkout -- .gitmodules
+        if ($exitCode -ne 0) { throw "git submodule update failed" }
     }
+} else {
+    git -C $Root submodule update --init --recursive
+    if ($LASTEXITCODE -ne 0) { throw "git submodule update failed" }
 }

@@ -55,11 +55,14 @@ $prebuiltDir = "$RootDir\$ModuleDir\Prebuilt"
 
 switch ($Module) {
     "minusframework-core" {
-        New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp" | Out-Null
+        New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp", "$stageDir\Bin" | Out-Null
         Copy-Item "$prebuiltDir\Bpl\MinusFramework_Runtime.bpl" "$stageDir\Bpl\" -ErrorAction Stop
         Copy-Item "$prebuiltDir\Bpl\MinusFramework_Design.bpl"  "$stageDir\Bpl\" -ErrorAction Stop
         Copy-Item "$prebuiltDir\Dcp\MinusFramework_Runtime.dcp" "$stageDir\Dcp\" -ErrorAction Stop
         Copy-Item "$prebuiltDir\Dcp\MinusFramework_Design.dcp"  "$stageDir\Dcp\" -ErrorAction Stop
+        if (Test-Path "$prebuiltDir\Bin\MinusCLI.exe") {
+            Copy-Item "$prebuiltDir\Bin\MinusCLI.exe" "$stageDir\Bin\MinusCLI.exe" -ErrorAction Stop
+        }
     }
     "minusframework-telemetry" {
         New-Item -ItemType Directory -Force -Path "$stageDir\Bpl", "$stageDir\Dcp" | Out-Null

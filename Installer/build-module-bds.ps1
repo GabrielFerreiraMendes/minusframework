@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory)][string]$Module,
-    [Parameter(Mandatory)][string]$RootDir
+    [Parameter(Mandatory)][string]$RootDir,
+    [string]$Define = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -20,7 +21,8 @@ $ModuleDir = switch ($Module) {
 $Projects = switch ($Module) {
     "minusframework-core" {
         "Core\Packages\MinusFramework_Runtime.dproj",
-        "Core\Packages\MinusFramework_Design.dproj"
+        "Core\Packages\MinusFramework_Design.dproj",
+        "Cli\Source\MinusCLI.dproj"
     }
     "minusframework-orm" {
         "ORM\MinusORM.dproj"
@@ -75,6 +77,26 @@ foreach ($proj in $Projects) {
     }
 }
 
+$localFiles = @()
+if ($Define) {
+    Write-Host "Injecting define(s): $Define" -ForegroundColor Cyan
+    foreach ($proj in $Projects) {
+        $fullPath = Join-Path -Path $RootDir -ChildPath $proj
+        $localPath = $fullPath + ".local"
+        $localContent = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DCC_Define>$Define;`$(DCC_Define)</DCC_Define>
+  </PropertyGroup>
+</Project>
+"@
+        Set-Content -Path $localPath -Value $localContent -Encoding UTF8
+        $localFiles += $localPath
+        Write-Host "  Created: $localPath"
+    }
+}
+
 $tempDir = Join-Path -Path $RootDir -ChildPath "tmp_bds_$ModuleDir"
 [void](New-Item -ItemType Directory -Force -Path $tempDir)
 
@@ -116,6 +138,13 @@ if ($errFiles) {
             Write-Host $errContent -ForegroundColor Red
         }
     }
+}
+
+if ($localFiles) {
+    foreach ($localFile in $localFiles) {
+        Remove-Item -Path $localFile -Force -ErrorAction SilentlyContinue
+    }
+    Write-Host "Cleaned up .dproj.local files."
 }
 
 Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue

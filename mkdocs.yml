@@ -1,0 +1,105 @@
+site_name: MinusFrameWork
+site_description: ORM, Mensageria, Telemetria, Migrator e MCP Server para Delphi
+site_author: MinusFrameWork
+site_url: https://minusframework.com.br
+repo_url: https://github.com/GabrielFerreiraMendes/minusframework-meta
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+  logo: assets/logo.svg
+  favicon: assets/favicon.ico
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/GabrielFerreiraMendes/minusframework-meta
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/minusframework
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+  - tables
+
+nav:
+  - Início: index.md
+  - Quick Start: getting-started.md
+  - ORM:
+    - orm/index.md
+    - CRUD Básico: orm/crud.md
+    - Mapeamento de Entidades: orm/entities.md
+    - Criteria API: orm/criteria.md
+    - Unit of Work: orm/unit-of-work.md
+    - Providers: orm/providers.md
+  - CLI:
+    - cli/index.md
+    - Comandos: cli/commands.md
+    - make:entity: cli/make-entity.md
+    - new api: cli/new-api.md
+  - Migrator:
+    - migrator/index.md
+    - CLI Reference: migrator/cli.md
+    - DLL Reference: migrator/dll.md
+  - Mensageria:
+    - messaging/index.md
+    - Configuração: messaging/config.md
+    - Sagas: messaging/sagas.md
+  - MinusAI:
+    - ai/index.md
+    - MCP Server: ai/mcp-server.md
+    - Ferramentas: ai/tools.md
+  - Extensões:
+    - extensions/index.md
+    - Soft Delete: extensions/soft-delete.md
+    - Auditoria: extensions/audit.md
+    - Cache: extensions/cache.md
+  - Telemetria: telemetry/index.md
+  - Licenciamento: licensing.md
+  - Sobre: about.md
+
+extra_css:
+  - assets/custom.css
+
+copyright: Copyright &copy; 2026 MinusFrameWork. MIT License.
