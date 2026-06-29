@@ -7,20 +7,15 @@ Write-Host "MinusFrameWork - Wiki Deploy" -ForegroundColor Cyan
 Write-Host "============================" -ForegroundColor Cyan
 Write-Host ""
 
-if (-not (Test-Path "$WikiUrl.git")) {
-    Write-Host "1. Primeiro, acesse no navegador:" -ForegroundColor Yellow
+Write-Host "1. Verificando se o wiki existe..." -ForegroundColor Gray
+$wikiExists = git -c credential.helper=manager ls-remote "https://github.com/GabrielFerreiraMendes/minusframework-meta.wiki.git" 2>$null
+if (-not $wikiExists) {
+    Write-Host "2. Acesse no navegador para criar o wiki:" -ForegroundColor Yellow
     Write-Host "   $WikiUrl" -ForegroundColor White
-    Write-Host "   (Clique em 'Create the first page' se aparecer)"
+    Write-Host "   (Clique em 'Create the first page')"
     Write-Host ""
-    Write-Host "2. Depois execute este script novamente com -Token" -ForegroundColor Yellow
-    Write-Host "   .\deploy-wiki.ps1 -Token `"seu_pat`"" -ForegroundColor White
-    Write-Host ""
-    
-    if ($Token) {
-        Write-Host "Tentando push com token fornecido..." -ForegroundColor Gray
-    } else {
-        exit 1
-    }
+    Write-Host "3. Depois execute novamente: .\deploy-wiki.ps1 -Token `"seu_pat`"" -ForegroundColor Yellow
+    if (-not $Token) { exit 1 }
 }
 
 $WikiPages = @{
