@@ -1,36 +1,55 @@
 # Licenciamento
 
-## MIT License
+O MinusFrameWork é distribuído em três tiers de licença. Cada tier dá acesso a um conjunto específico de módulos e funcionalidades.
 
-Copyright (c) 2026 MinusFrameWork
+## Tiers
 
-Todos os módulos do MinusFrameWork (Core, ORM, Migrator, Messaging, Telemetry, Feature Flags, Extensions, AI e CLI) são distribuídos sob a licença MIT:
+### Free
 
-```
-MIT License
+| Módulo | Incluído |
+|--------|----------|
+| MinusORM (SQLite apenas) | Sim |
+| MinusMigrator | Sim |
+| MinusCLI | Sim |
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+**Licença:** MIT. Código-fonte aberto, uso livre para projetos pessoais e aprendizado.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+**Restrições:** ORM limitado ao driver SQLite. Demais bancos (Firebird, PostgreSQL, MySQL, MariaDB, MSSQL, Oracle) não estão disponíveis.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+---
 
-## Uso Comercial
+### Pro
 
-O framework pode ser utilizado em projetos comerciais sem restrições. Não é necessário adquirir licença paga para uso em produção.
+Tudo do **Free**, mais:
+
+| Módulo | Incluído |
+|--------|----------|
+| MinusORM (todos os 7 bancos) | Sim |
+| MinusMigrator | Sim |
+| MinusCLI | Sim |
+| MinusMessaging | Sim |
+| MinusExtensions | Sim |
+| MinusFeatureFlags | Sim |
+
+**Uso comercial permitido** mediante aquisição de licença. Inclui atualizações por 12 meses.
+
+---
+
+### Enterprise
+
+Tudo do **Pro**, mais:
+
+| Módulo | Incluído |
+|--------|----------|
+| MinusTelemetry | Sim |
+| MinusAI | Sim |
+| Suporte prioritário | Sim |
+| Consultoria técnica | Sim |
+| Licença perpétua | Sim |
+
+Ideal para empresas que exigem suporte dedicado, implantação on-premise e acesso a todos os módulos do ecossistema.
+
+---
 
 ## Dependências de Terceiros
 
@@ -42,7 +61,3 @@ O MinusFrameWork utiliza as seguintes bibliotecas de terceiros, cada uma com sua
 | Horse | MIT | Extensions |
 | Horse-JWT | MIT | Extensions |
 | Horse-Jhonson | MIT | CLI (scaffolding) |
-
-## Edição Community
-
-A edição Community inclui todos os módulos com funcionalidades essenciais — sem limite de uso, sem expiração e sem necessidade de registro.

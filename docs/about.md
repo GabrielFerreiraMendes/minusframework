@@ -31,4 +31,4 @@ Desenvolvido por **Gabriel Ferreira Mendes** e contribuidores da comunidade.
 
 ## Licença
 
-Todos os módulos são distribuídos sob licença **MIT** — consulte a página [Licenciamento](licensing.md) para detalhes.
+O MinusFrameWork é distribuído em três tiers: **Free** (MIT), **Pro** (comercial) e **Enterprise** (perpétua). Consulte a página [Licenciamento](licensing.md) para detalhes.

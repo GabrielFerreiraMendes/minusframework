@@ -9,28 +9,48 @@
 
 ## Ecossistema
 
-| Módulo | Descrição | Licença |
-|--------|-----------|---------|
-| **MinusORM** | ORM com RTTI, queries fluentes, Unit of Work, Change Tracking, cache, soft delete, audit — 7 bancos | MIT |
-| **MinusMigrator** | Migração versionada de schema via CLI + GUI + DLL | MIT |
-| **MinusFeatureFlags** | Feature flags com engine local, providers e REST API | MIT |
-| **MinusMessaging** | Message bus multi-provider com retry, circuit breaker, sagas e outbox | MIT |
-| **MinusTelemetry** | Tracing e logging estruturado (OpenTelemetry-style) | MIT |
-| **MinusExtensions** | Wrappers para Horse, JWT e bibliotecas de terceiros | MIT |
-| **MinusAI** | Agentes inteligentes e servidor MCP (Model Context Protocol) | MIT |
+| Módulo | Descrição | Tier |
+|--------|-----------|------|
+| **MinusORM** | ORM com RTTI, queries fluentes, Unit of Work, Change Tracking — SQLite | Free |
+| **MinusORM Pro** | ORM completo — 7 bancos (Firebird, PostgreSQL, MySQL, MariaDB, MSSQL, Oracle) | Pro |
+| **MinusMigrator** | Migração versionada de schema via CLI + GUI + DLL | Free |
+| **MinusCLI** | CLI de scaffolding (`make:entity`, `new:api`) | Free |
+| **MinusFeatureFlags** | Feature flags com engine local, providers e REST API | Pro |
+| **MinusMessaging** | Message bus multi-provider com retry, circuit breaker, sagas e outbox | Pro |
+| **MinusExtensions** | Wrappers para Horse, JWT e bibliotecas de terceiros | Pro |
+| **MinusTelemetry** | Tracing e logging estruturado (OpenTelemetry-style) | Enterprise |
+| **MinusAI** | Agentes inteligentes e servidor MCP (Model Context Protocol) | Enterprise |
 
 ---
 
 ## Comece em 5 Minutos
 
 ```bash
-# 1. Baixe o instalador mais recente
-# 2. Execute e escolha "Instalação Completa"
+# 1. Baixe o instalador Free
+# 2. Execute e escolha "Instalação Básica"
 # 3. Adicione as BPLs ao RAD Studio
-# 4. Crie seu primeiro projeto
+# 4. Crie seu primeiro projeto com SQLite
 ```
 
 👉 [**Guia de Quick Start**](getting-started.md)
+
+---
+
+## Comparativo de Tiers
+
+| Funcionalidade | Free | Pro | Enterprise |
+|---------------|------|-----|------------|
+| ORM SQLite | Sim | Sim | Sim |
+| ORM multi-banco | — | Sim | Sim |
+| Migrator | Sim | Sim | Sim |
+| CLI | Sim | Sim | Sim |
+| Messaging | — | Sim | Sim |
+| Feature Flags | — | Sim | Sim |
+| Extensions | — | Sim | Sim |
+| Telemetry | — | — | Sim |
+| AI / MCP | — | — | Sim |
+| Suporte | Comunidade | 12 meses | Prioritário |
+| Licença | MIT | Comercial | Perpétua |
 
 ---
 
@@ -46,10 +66,8 @@
 
 | Versão | Link |
 |--------|------|
-| **v0.1.0 (Community)** | [Baixar Instalador](https://github.com/GabrielFerreiraMendes/minusframework-meta/releases/latest) |
-| **Código-fonte** | `git clone https://github.com/GabrielFerreiraMendes/minusframework-meta.git` |
-
-A edição Community inclui todos os módulos com funcionalidades essenciais — sem limite de uso, sem expiração.
+| **Free (v0.1.0)** | [Baixar Instalador](https://github.com/GabrielFerreiraMendes/minusframework-meta/releases/latest) |
+| **Pro / Enterprise** | [Solicitar Orçamento](mailto:gabriel@minusframework.com.br) |
 
 ---
 
