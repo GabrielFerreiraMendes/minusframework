@@ -1,15 +1,15 @@
 # Quick Start — O Tour de 5 Minutos
 
-## 1. Instalação
+## 1. Instalação (Free)
 
-Baixe o instalador da [página de releases](https://github.com/GabrielFerreiraMendes/minusframework-meta/releases/latest) e execute.
+Baixe o instalador Free da [página de releases](https://github.com/GabrielFerreiraMendes/minusframework-meta/releases/latest) e execute.
 
 O instalador copia para `C:\MinusFramework`:
 
 - **BPLs** — pacotes runtime e design-time
 - **DCPs** — arquivos de cabeçalho
-- **DLLs** — ORM e Migrator via C-API
-- **CLIs** — `MinusMigrator.exe`, `MinusMessaging.exe`, `minus.exe`
+- **DLLs** — ORM (SQLite) e Migrator via C-API
+- **CLIs** — `MinusMigrator.exe`, `minus.exe`
 - **Samples** — projetos demonstrativos com código-fonte
 
 ### Configuração no RAD Studio
@@ -24,6 +24,8 @@ O instalador copia para `C:\MinusFramework`:
    ```
    C:\MinusFramework\Bpl\MinusFramework_Design.bpl
    ```
+
+> **Pro/Enterprise:** Consulte [Licenciamento](licensing.md) para adquirir acesso a todos os bancos, mensageria, telemetria e AI.
 
 ---
 
@@ -143,8 +145,9 @@ end.
 | ORM Completo (Criteria API, UoW) | [Documentação ORM](orm/crud.md) |
 | Migração de Banco | [MinusMigrator CLI](migrator/cli.md) |
 | CLI de Scaffolding | [Comandos do minus.exe](cli/commands.md) |
-| Servidor MCP de IA | [MinusAI](ai/mcp-server.md) |
-| Mensageria | [MinusMessaging](messaging/config.md) |
+| Servidor MCP de IA | [MinusAI](ai/mcp-server.md) — Enterprise |
+| Mensageria | [MinusMessaging](messaging/config.md) — Pro |
+| Tiers de Licença | [Licenciamento](licensing.md) |
 
 ---
 
