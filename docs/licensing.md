@@ -51,6 +51,62 @@ Ideal para empresas que exigem suporte dedicado, implantação on-premise e aces
 
 ---
 
+## Como Funciona a Ativação
+
+Cada instalador do MinusFrameWork inclui todos os módulos. O que determina quais funcionalidades ficam disponíveis é a **chave de licença**, validada offline via RSA-2048.
+
+### Formato da Chave
+
+```
+{payload}.{assinatura}
+```
+
+Onde:
+- `payload` = JSON com `tier`, `customer`, `email`, `expires` (Base64URL)
+- `assinatura` = RSA-SHA256 sobre o payload (Base64URL)
+
+### Onde Usar
+
+```pascal
+uses MF.LicenseManager;
+
+var
+  Licenca: TLicenseInfo;
+begin
+  Licenca := TLicenseManager.Validate('eyJ0aW...');
+
+  if Licenca.IsValid and TLicenseManager.CanAccess(Licenca.Tier, ltPro) then
+    HabilitarMensageria;
+end;
+```
+
+A lib valida offline usando Windows CryptoAPI — **sem chamada de servidor**, sem telemetria, sem envio de dados.
+
+### License Server
+
+Para gerar chaves, rode o servidor incluso no meta-repo:
+
+```bash
+cd license-server
+npm install
+npm run generate-keys   # cria private.pem + public.pem
+npm start               # HTTP :3456
+```
+
+```bash
+curl -X POST http://localhost:3456/license/generate \
+  -H "Content-Type: application/json" \
+  -d '{"tier":"PRO","customer":"Empresa X","email":"x@empresa.com","expires":"2027-12-31"}'
+```
+
+### Segurança
+
+- A chave privada RSA fica **apenas no servidor** (nunca versionada)
+- A chave pública é embedada no `.exe` — qualquer um pode ver, mas só o servidor pode assinar
+- Cada chave identifica o comprador; se vazar, você revoga e sabe quem foi
+
+---
+
 ## Dependências de Terceiros
 
 O MinusFrameWork utiliza as seguintes bibliotecas de terceiros, cada uma com sua própria licença:
