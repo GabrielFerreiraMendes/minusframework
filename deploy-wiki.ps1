@@ -58,7 +58,7 @@ git branch -M main 2>$null | Out-Null
 
 $repoUrl = "https://GabrielFerreiraMendes:${Token}@github.com/GabrielFerreiraMendes/minusframework-meta.wiki.git"
 git remote add origin $repoUrl 2>$null
-git push -u origin main 2>&1
+git push -uf origin main 2>&1
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`nWiki deployed successfully!" -ForegroundColor Green
