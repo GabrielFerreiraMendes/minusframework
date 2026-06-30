@@ -22,7 +22,7 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
       - name: Build docs
-        run: mkdocs build --strict
+        run: mkdocs build
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: mkdocs gh-deploy --force

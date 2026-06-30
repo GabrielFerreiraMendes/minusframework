@@ -1,5 +1,48 @@
-# Licensing
+# Licenciamento
 
-MinusFrameWork licensing terms, commercial use conditions, and third-party notices. Termos de licenciamento, condicoes de uso comercial e avisos de terceiros.
+## MIT License
 
-> Consulte o [GitHub Wiki](https://github.com/GabrielFerreiraMendes/minusframework-meta/wiki) para documentacao completa.
+Copyright (c) 2026 MinusFrameWork
+
+Todos os módulos do MinusFrameWork (Core, ORM, Migrator, Messaging, Telemetry, Feature Flags, Extensions, AI e CLI) são distribuídos sob a licença MIT:
+
+```
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## Uso Comercial
+
+O framework pode ser utilizado em projetos comerciais sem restrições. Não é necessário adquirir licença paga para uso em produção.
+
+## Dependências de Terceiros
+
+O MinusFrameWork utiliza as seguintes bibliotecas de terceiros, cada uma com sua própria licença:
+
+| Biblioteca | Licença | Módulo |
+|-----------|---------|--------|
+| FireDAC | Proprietária (Embarcadero) | ORM, Migrator |
+| Horse | MIT | Extensions |
+| Horse-JWT | MIT | Extensions |
+| Horse-Jhonson | MIT | CLI (scaffolding) |
+
+## Edição Community
+
+A edição Community inclui todos os módulos com funcionalidades essenciais — sem limite de uso, sem expiração e sem necessidade de registro.
