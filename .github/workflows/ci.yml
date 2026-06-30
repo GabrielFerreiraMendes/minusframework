@@ -35,11 +35,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: Deploy Wiki
+        shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if (Test-Path "deploy-wiki.ps1") {
-            pwsh ./deploy-wiki.ps1 -Token "$env:GH_TOKEN"
+            ./deploy-wiki.ps1 -Token "$env:GH_TOKEN"
           }
 
   release-sync:
