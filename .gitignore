@@ -8,3 +8,13 @@ __recovery/
 *.exe
 Dist/
 site/
+# Submodule directories (source code lives in their own repos)
+AI/
+Cli/
+Core/
+Extensions/
+FeatureFlags/
+Messaging/
+Migrator/
+ORM/
+Telemetry/
