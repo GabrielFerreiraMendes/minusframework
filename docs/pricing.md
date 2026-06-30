@@ -87,8 +87,19 @@ Toda contribuição é reinvestida no ecossistema:
 
 O objetivo é que o projeto se sustente comercialmente pelas licenças **Pro** e **Enterprise**, mas enquanto isso não é realidade, cada doação ajuda a manter o framework vivo e evoluindo.
 
-[Doar via Pix](mailto:gabriel@minusframework.com.br?subject=Doa%C3%A7%C3%A3o){ .md-button }
-[Doar via PayPal](mailto:gabriel@minusframework.com.br?subject=Doa%C3%A7%C3%A3o%20PayPal){ .md-button }
+=== "Pix"
+
+    <!-- Substitua `SEU_PIX_AQUI` pela sua chave Pix (CPF, email, celular ou aleatória) -->
+    ![QR Code Pix](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=SEU_PIX_AQUI&bgcolor=ffffff&color=111111)
+
+    **Chave Pix:** `gabriel@minusframework.com.br`
+
+=== "PayPal"
+
+    <!-- Substitua `SEU_EMAIL_PAYPAL` pelo seu email do PayPal -->
+    ![QR Code PayPal](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://paypal.me/SEU_USUARIO&bgcolor=ffffff&color=111111)
+
+    [paypal.me/SEU_USUARIO](https://paypal.me/SEU_USUARIO)
 
 ---
 
