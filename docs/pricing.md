@@ -87,19 +87,12 @@ Toda contribuição é reinvestida no ecossistema:
 
 O objetivo é que o projeto se sustente comercialmente pelas licenças **Pro** e **Enterprise**, mas enquanto isso não é realidade, cada doação ajuda a manter o framework vivo e evoluindo.
 
-=== "Pix"
+**Pix (sem taxas):**
 
-    <!-- Chave Pix aleatória: 4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2 -->
-    ![QR Code Pix](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2&bgcolor=ffffff&color=111111)
+<!-- Chave Pix aleatória: 4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2 -->
+![QR Code Pix](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2&bgcolor=ffffff&color=111111)
 
-    **Chave Pix:** `4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2`
-
-=== "PayPal"
-
-    <!-- Substitua `SEU_EMAIL_PAYPAL` pelo seu email do PayPal -->
-    ![QR Code PayPal](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://paypal.me/SEU_USUARIO&bgcolor=ffffff&color=111111)
-
-    [paypal.me/SEU_USUARIO](https://paypal.me/SEU_USUARIO)
+**Chave Pix:** `4214aaa8-d6d1-4d01-81c1-7a0835fdc5b2`
 
 ---
 
