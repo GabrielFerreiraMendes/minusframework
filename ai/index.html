@@ -1662,10 +1662,154 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#o-que-e-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é MCP?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#funcionalidades" class="md-nav__link">
     <span class="md-ellipsis">
       
         Funcionalidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ativar-a-licenca-enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ativar a licença Enterprise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-iniciar-o-servidor-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Iniciar o servidor MCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurar-no-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configurar no Claude Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configurar-no-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configurar no Cursor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos de Uso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicar-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicar código
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerar-entidade-a-partir-de-tabela-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerar entidade a partir de tabela existente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executar-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executar consulta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitetura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segurança
       
     </span>
   </a>
@@ -1693,14 +1837,148 @@
 
 
 <h1 id="minusai">MinusAI<a class="headerlink" href="#minusai" title="Permanent link">&para;</a></h1>
-<p>Servidor MCP (Model Context Protocol) que expõe ferramentas de IA para engenharia de software Delphi.</p>
+<p>Servidor MCP (Model Context Protocol) que expõe ferramentas de IA para engenharia de software Delphi. Permite que assistentes como Claude, Cursor e GitHub Copilot interajam com seu código e banco de dados.</p>
+<h2 id="o-que-e-mcp">O que é MCP?<a class="headerlink" href="#o-que-e-mcp" title="Permanent link">&para;</a></h2>
+<p>MCP (Model Context Protocol) é um padrão aberto que permite que modelos de linguagem (LLMs) se conectem a ferramentas externas. O MinusAI implementa um servidor MCP que se comunica via <strong>JSON-RPC 2.0</strong> sobre stdio.</p>
 <h2 id="funcionalidades">Funcionalidades<a class="headerlink" href="#funcionalidades" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Descrição</th>
+<th>Exemplo de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>explicar_codigo</td>
+<td>Analisa arquivos .pas e extrai metadados</td>
+<td>"O que faz essa unit?"</td>
+</tr>
+<tr>
+<td>gerar_entidade</td>
+<td>Gera entidade ORM via template ou schema</td>
+<td>"Cria entidade para tabela CLIENTE"</td>
+</tr>
+<tr>
+<td>criar_migracao</td>
+<td>Gera arquivo de migração versionada</td>
+<td>"Cria migração para adicionar coluna email"</td>
+</tr>
+<tr>
+<td>executar_consulta</td>
+<td>Executa SQL contra banco FireDAC real</td>
+<td>"Lista todos os pedidos do mês"</td>
+</tr>
+<tr>
+<td>listar_tabelas</td>
+<td>Lista tabelas do banco de dados</td>
+<td>"Quais tabelas existem?"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<h3 id="1-ativar-a-licenca-enterprise">1. Ativar a licença Enterprise<a class="headerlink" href="#1-ativar-a-licenca-enterprise" title="Permanent link">&para;</a></h3>
+<p>`pascal
+uses MF.LicenseManager;</p>
+<p>begin
+  TLicenseManager.Validate('sua-chave-aqui');
+end.
+`</p>
+<h3 id="2-iniciar-o-servidor-mcp">2. Iniciar o servidor MCP<a class="headerlink" href="#2-iniciar-o-servidor-mcp" title="Permanent link">&para;</a></h3>
+<p>`pascal
+uses
+  MF.AI.MCP,
+  MF.AI.Ferramentas;</p>
+<p>var
+  LServer: IMCServer;
+begin
+  LServer := TMCPServer.Criar
+    .AdicionarFerramenta(TFerramentaExplicarCodigo.Criar)
+    .AdicionarFerramenta(TFerramentaGerarEntidade.Criar)
+    .AdicionarFerramenta(TFerramentaCriarMigracao.Criar)
+    .AdicionarFerramenta(TFerramentaExecutarConsulta.Criar)
+    .AdicionarFerramenta(TFerramentaListarTabelas.Criar);</p>
+<p>// Modo stdio (padrão para integração com IDEs)
+  LServer.Iniciar;
+end.
+`</p>
+<h3 id="3-configurar-no-claude-desktop">3. Configurar no Claude Desktop<a class="headerlink" href="#3-configurar-no-claude-desktop" title="Permanent link">&para;</a></h3>
+<p>Edite claude_desktop_config.json:</p>
+<p><code>json
+{
+  "mcpServers": {
+    "minusframework": {
+      "command": "MinusAI.exe",
+      "args": ["--mcp"],
+      "env": {
+        "MINUS_LICENSE": "sua-chave-aqui"
+      }
+    }
+  }
+}</code></p>
+<h3 id="4-configurar-no-cursor">4. Configurar no Cursor<a class="headerlink" href="#4-configurar-no-cursor" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abra Cursor Settings &gt; Extensions &gt; MCP</li>
+<li>Clique em Add new MCP server</li>
+<li>Preencha:</li>
+<li><strong>Name:</strong> minusframework</li>
+<li><strong>Type:</strong> stdio</li>
+<li><strong>Command:</strong> MinusAI.exe --mcp</li>
+<li><strong>Env:</strong> MINUS_LICENSE=sua-chave-aqui</li>
+</ol>
+<h2 id="exemplos-de-uso">Exemplos de Uso<a class="headerlink" href="#exemplos-de-uso" title="Permanent link">&para;</a></h2>
+<h3 id="explicar-codigo">Explicar código<a class="headerlink" href="#explicar-codigo" title="Permanent link">&para;</a></h3>
+<p>O assistente pergunta:</p>
+<blockquote>
+<p>"O que faz a unit MF.ORM.Core.pas?"</p>
+</blockquote>
+<p>O servidor responde com:
+<code>json
+{
+  "arquivo": "MF.ORM.Core.pas",
+  "classes": ["TConexaoFactory", "TRepositorioGenerico"],
+  "interfaces": ["IConexao", "IRepositorio"],
+  "dependencias": ["System.RTTI", "FireDAC.Comp.Client"],
+  "linhas": 850
+}</code></p>
+<h3 id="gerar-entidade-a-partir-de-tabela-existente">Gerar entidade a partir de tabela existente<a class="headerlink" href="#gerar-entidade-a-partir-de-tabela-existente" title="Permanent link">&para;</a></h3>
+<p><code>json
+{
+  "ferramenta": "gerar_entidade",
+  "parametros": {
+    "tabela": "CLIENTE",
+    "namespace": "MeuProjeto.Entidades",
+    "incluir_atributos": true
+  }
+}</code></p>
+<p>Retorna o código Pascal completo com [Tabela], [ChavePrimaria], [Campo] para cada coluna.</p>
+<h3 id="executar-consulta">Executar consulta<a class="headerlink" href="#executar-consulta" title="Permanent link">&para;</a></h3>
+<p><code>json
+{
+  "ferramenta": "executar_consulta",
+  "parametros": {
+    "sql": "SELECT COUNT(*) as total FROM pedidos WHERE data &gt;= date('now', '-30 days')",
+    "conexao": "producao"
+  }
+}</code></p>
+<h2 id="arquitetura">Arquitetura<a class="headerlink" href="#arquitetura" title="Permanent link">&para;</a></h2>
+<p><code>LLM (Claude/Cursor)
+  │  JSON-RPC (stdin/stdout)
+  ▼
+MinusAI MCP Server
+  │
+  ├── Ferramenta: explicar_codigo → analisa .pas com RTTI
+  ├── Ferramenta: gerar_entidade  → template engine + schema DB
+  ├── Ferramenta: criar_migracao  → gera SQL versionado
+  ├── Ferramenta: executar_consulta → FireDAC real
+  └── Ferramenta: listar_tabelas  → INFORMATION_SCHEMA</code></p>
+<h2 id="seguranca">Segurança<a class="headerlink" href="#seguranca" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>explicar_codigo</code> — analisa arquivos <code>.pas</code> e extrai metadados</li>
-<li><code>gerar_entidade</code> — gera entidade ORM (via template ou schema do banco)</li>
-<li><code>criar_migracao</code> — gera arquivo de migração versionada</li>
-<li><code>executar_consulta</code> — executa SQL contra banco FireDAC real</li>
-<li><code>listar_tabelas</code> — lista tabelas do banco de dados</li>
+<li>O servidor só executa comandos permitidos explicitamente</li>
+<li>Consultas SQL são <strong>read-only</strong> por padrão (UPDATE/INSERT/DELETE bloqueados)</li>
+<li>A chave de licença é lida de variável de ambiente, nunca exposta no código</li>
+<li>Nenhum dado é enviado para servidores externos — tudo roda localmente</li>
 </ul>
 
 

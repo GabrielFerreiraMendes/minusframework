@@ -1655,6 +1655,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extensoes-disponiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extensoes Disponiveis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soft-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Soft Delete
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache L2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bulk-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bulk Operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Tenancy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-serializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Serializer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Async
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1674,45 +1770,121 @@
 
 
 <h1 id="minusextensions">MinusExtensions<a class="headerlink" href="#minusextensions" title="Permanent link">&para;</a></h1>
-<p>Pacote de extensões plugáveis para o MinusORM.</p>
+<p>Pacote de extensoes plugaveis que adicionam funcionalidades transversais ao MinusORM.</p>
+<h2 id="extensoes-disponiveis">Extensoes Disponiveis<a class="headerlink" href="#extensoes-disponiveis" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Extensão</th>
-<th>Descrição</th>
+<th>Extensao</th>
+<th>Descricao</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Soft Delete</td>
-<td>Deleção lógica automática com <code>[DesabilitarSoftDelete]</code></td>
+<td><strong>Soft Delete</strong></td>
+<td>Delecao logica com <code>[DesabilitarSoftDelete]</code></td>
 </tr>
 <tr>
-<td>Auditoria</td>
+<td><strong>Auditoria</strong></td>
 <td>Quem criou, alterou e quando</td>
 </tr>
 <tr>
-<td>Cache</td>
-<td>Cache L2 distribuído</td>
+<td><strong>Cache L2</strong></td>
+<td>Cache distribuiido (Redis/Memcached)</td>
 </tr>
 <tr>
-<td>Bulk</td>
-<td>Inserção/atualização em lote</td>
+<td><strong>Bulk</strong></td>
+<td>Insercao/atualizacao em lote</td>
 </tr>
 <tr>
-<td>Multi-Tenancy</td>
+<td><strong>Multi-Tenancy</strong></td>
 <td>Isolamento por tenant</td>
 </tr>
 <tr>
-<td>JSON Serializer</td>
-<td>Serializa entidades para JSON</td>
+<td><strong>JSON Serializer</strong></td>
+<td>Entidades para JSON</td>
 </tr>
 <tr>
-<td>Async</td>
-<td>Operações assíncronas</td>
+<td><strong>Async</strong></td>
+<td>Operacoes assincronas</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="soft-delete">Soft Delete<a class="headerlink" href="#soft-delete" title="Permanent link">&para;</a></h2>
+<p>Marca registros como inativos em vez de remove-los:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">type</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p">[</span><span class="n">Tabela</span><span class="p">(</span><span class="s">&#39;PRODUTO&#39;</span><span class="p">)]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="n">TProduto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TMFEntity</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="kp">private</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">FAtivo</span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="o">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="kp">public</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">[</span><span class="n">DesabilitarSoftDelete</span><span class="p">]</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">property</span><span class="w"> </span><span class="py">Ativo</span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="kp">read</span><span class="w"> </span><span class="nf">FAtivo</span><span class="w"> </span><span class="kp">write</span><span class="w"> </span><span class="nf">FAtivo</span><span class="o">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">end</span><span class="o">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// DELETE vira UPDATE Ativo = false</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">LRepos</span><span class="o">.</span><span class="n">Deletar</span><span class="p">(</span><span class="n">Produto</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// WHERE ativo = 1 adicionado automaticamente</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">LTodos</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">LRepos</span><span class="o">.</span><span class="n">BuscarTodos</span><span class="o">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// Incluir inativos</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">LTodos</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">LRepos</span><span class="o">.</span><span class="n">BuscarTodosComInativos</span><span class="o">;</span>
+</code></pre></div>
+<hr />
+<h2 id="auditoria">Auditoria<a class="headerlink" href="#auditoria" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">type</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">[</span><span class="n">Tabela</span><span class="p">(</span><span class="s">&#39;CLIENTE&#39;</span><span class="p">)]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">[</span><span class="n">AuditLog</span><span class="p">]</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">TCliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TMFEntity</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>Salvar() preenche automaticamente:
+- criado_por, criado_em
+- alterado_por, alterado_em</p>
+<hr />
+<h2 id="cache-l2">Cache L2<a class="headerlink" href="#cache-l2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">LConexao</span><span class="o">.</span><span class="n">Configuracao</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="o">.</span><span class="n">CacheL2</span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">TCacheRedis</span><span class="o">.</span><span class="n">Criar</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="o">.</span><span class="n">Host</span><span class="p">(</span><span class="s">&#39;localhost:6379&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="o">.</span><span class="n">TTLPadrao</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// Cache hit: 300ms -&gt; 1ms</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">LPessoa</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">LRepos</span><span class="o">.</span><span class="n">BuscarPorId</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">;</span>
+</code></pre></div>
+<hr />
+<h2 id="bulk-operations">Bulk Operations<a class="headerlink" href="#bulk-operations" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">LRepos</span><span class="o">.</span><span class="n">BulkInsert</span><span class="p">(</span><span class="n">MinhaLista</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">LRepos</span><span class="o">.</span><span class="n">BulkUpdate</span><span class="p">(</span><span class="n">Criteria</span><span class="o">,</span><span class="w"> </span><span class="n">Updates</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">LRepos</span><span class="o">.</span><span class="n">BulkDelete</span><span class="p">(</span><span class="n">Criteria</span><span class="p">)</span><span class="o">;</span>
+</code></pre></div>
+<hr />
+<h2 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">  </span><span class="p">[</span><span class="n">Tabela</span><span class="p">(</span><span class="s">&#39;PEDIDO&#39;</span><span class="p">)]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">[</span><span class="n">Tenant</span><span class="p">(</span><span class="s">&#39;EMPRESA_ID&#39;</span><span class="p">)]</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">TPedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">(</span><span class="n">TMFEntity</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>WHERE empresa_id = X adicionado automaticamente em todas as queries.</p>
+<hr />
+<h2 id="json-serializer">JSON Serializer<a class="headerlink" href="#json-serializer" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">var</span><span class="w"> </span><span class="n">LJson</span><span class="o">:</span><span class="w"> </span><span class="k">string</span><span class="o">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">begin</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">LJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONSerializer</span><span class="o">.</span><span class="n">EntityToJson</span><span class="p">(</span><span class="n">Pessoa</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="n">LJson</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">TJSONSerializer</span><span class="o">.</span><span class="n">ListToJson</span><span class="p">(</span><span class="n">Lista</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">end</span><span class="o">;</span>
+</code></pre></div>
+<hr />
+<h2 id="async">Async<a class="headerlink" href="#async" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">var</span><span class="w"> </span><span class="n">LTask</span><span class="o">:</span><span class="w"> </span><span class="n">ITask</span><span class="o">&lt;</span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TPessoa</span><span class="o">&gt;&gt;;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">begin</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="n">LTask</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">LRepos</span><span class="o">.</span><span class="n">BuscarTodosAsync</span><span class="p">(</span><span class="k">Procedure</span><span class="p">(</span><span class="n">AResult</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="k">begin</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="n">ExibirResultado</span><span class="p">(</span><span class="n">AResult</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">end</span><span class="p">)</span><span class="o">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">end</span><span class="o">;</span>
+</code></pre></div>
 
 
 

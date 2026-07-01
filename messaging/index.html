@@ -1662,10 +1662,165 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#conceitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#providers" class="md-nav__link">
     <span class="md-ellipsis">
       
         Providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-uma-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo de uma Mensagem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluxo de uma Mensagem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retry-com-backoff-exponencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retry com Backoff Exponencial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuit Breaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbox-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outbox Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sagas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sagas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-completo-pedido-de-compra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo Completo — Pedido de Compra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplo Completo — Pedido de Compra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-a-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Definir a mensagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-publicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Publicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-consumir-com-retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Consumir com retry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configurar-circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configurar circuit breaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-habilitar-outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Habilitar outbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurações
       
     </span>
   </a>
@@ -1693,15 +1848,227 @@
 
 
 <h1 id="minusmessaging">MinusMessaging<a class="headerlink" href="#minusmessaging" title="Permanent link">&para;</a></h1>
-<p>Message bus multi-provider com suporte a retry, circuit breaker, sagas e outbox.</p>
+<p>Message bus multi-provider com suporte a <strong>retry</strong>, <strong>circuit breaker</strong>, <strong>sagas</strong> e <strong>outbox pattern</strong>. Projetado para comunicação assíncrona entre serviços e módulos dentro do ecossistema MinusFrameWork.</p>
+<h2 id="conceitos">Conceitos<a class="headerlink" href="#conceitos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mensagem</strong></td>
+<td>Dados trafegados entre produtor e consumidor. Qualquer record ou class serializável.</td>
+</tr>
+<tr>
+<td><strong>Barramento (Bus)</strong></td>
+<td>Abstração do provider. Você publica e consome sem acoplar ao middleware.</td>
+</tr>
+<tr>
+<td><strong>Handler</strong></td>
+<td>Função anônima que processa a mensagem. Executada quando uma mensagem chega.</td>
+</tr>
+<tr>
+<td><strong>Topologia</strong></td>
+<td>Exchange + fila (RabbitMQ), tópico (Kafka/Kafka), tópico (MQTT) — configurado automaticamente.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="providers">Providers<a class="headerlink" href="#providers" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>InMemory</strong> — testes e desenvolvimento</li>
-<li><strong>RabbitMQ</strong> — produção</li>
-<li><strong>Kafka</strong> — alta vazão</li>
-<li><strong>MQTT</strong> — IoT</li>
-<li><strong>Redis</strong> — filas leves</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Ideal para</th>
+<th>Persistência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>InMemory</strong></td>
+<td>Testes e desenvolvimento local</td>
+<td>Não (memória)</td>
+</tr>
+<tr>
+<td><strong>RabbitMQ</strong></td>
+<td>Produção, microsserviços</td>
+<td>Sim (disco)</td>
+</tr>
+<tr>
+<td><strong>Kafka</strong></td>
+<td>Alta vazão, logs de evento</td>
+<td>Sim (log compactado)</td>
+</tr>
+<tr>
+<td><strong>MQTT</strong></td>
+<td>IoT, dispositivos embarcados</td>
+<td>Opcional (QoS)</td>
+</tr>
+<tr>
+<td><strong>Redis</strong></td>
+<td>Filas leves, cache de mensagens</td>
+<td>Opcional (RDB/AOF)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fluxo-de-uma-mensagem">Fluxo de uma Mensagem<a class="headerlink" href="#fluxo-de-uma-mensagem" title="Permanent link">&para;</a></h2>
+<p><code>Publisher → Bus.Publicar → Provider → Fila/Tópico → Provider → Bus.Consumir → Handler
+                                            │
+                                     [Retry 3x se falhar]
+                                            │
+                                     [Circuit Breaker se 5+ falhas consecutivas]
+                                            │
+                                     [Dead Letter se esgotar tentativas]</code></p>
+<h3 id="retry-com-backoff-exponencial">Retry com Backoff Exponencial<a class="headerlink" href="#retry-com-backoff-exponencial" title="Permanent link">&para;</a></h3>
+<p>Quando um handler lança uma exceção, o barramento tenta novamente com intervalo crescente:</p>
+<table>
+<thead>
+<tr>
+<th>Tentativa</th>
+<th>Atraso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1ª</td>
+<td>1s</td>
+</tr>
+<tr>
+<td>2ª</td>
+<td>2s</td>
+</tr>
+<tr>
+<td>3ª</td>
+<td>4s</td>
+</tr>
+<tr>
+<td>4ª+</td>
+<td>8s (limitado a MaxRetryDelay)</td>
+</tr>
+</tbody>
+</table>
+<p>Após esgotar as tentativas, a mensagem vai para <strong>Dead Letter Queue</strong> (DLQ).</p>
+<h3 id="circuit-breaker">Circuit Breaker<a class="headerlink" href="#circuit-breaker" title="Permanent link">&para;</a></h3>
+<p>Se o handler falhar 5 vezes consecutivas, o circuito <strong>abre</strong> por 30 segundos — nenhuma mensagem é entregue durante esse período. Após o timeout, o circuito <strong>meio-abre</strong> e permite uma mensagem de teste. Se bem-sucedida, <strong>fecha</strong> novamente.</p>
+<h3 id="outbox-pattern">Outbox Pattern<a class="headerlink" href="#outbox-pattern" title="Permanent link">&para;</a></h3>
+<p>Garante que a mensagem só é publicada se a transação do banco for confirmada:</p>
+<p><code>1. BEGIN TRAN
+2. Salvar Pedido no banco
+3. Inserir linha na tabela Outbox
+4. COMMIT
+5. Outbox Worker → Bus.Publicar (assíncrono)
+6. Deletar linha da Outbox</code></p>
+<p>Isso elimina o problema de "mensagem enviada mas transação falhou" ou "transação commitada mas mensagem não enviada".</p>
+<h3 id="sagas">Sagas<a class="headerlink" href="#sagas" title="Permanent link">&para;</a></h3>
+<p>Uma saga é uma sequência de passos com compensação em caso de falha:</p>
+<p><code>ProcessarPedido
+  ├── 1. ReservarEstoque ────────── se falhar → EstornarReserva
+  ├── 2. CobrarCartao ───────────── se falhar → Reembolsar
+  └── 3. ConfirmarEnvio ─────────── se falhar → CancelarEnvio</code></p>
+<p>Cada passo publica uma mensagem. O próximo passo é acionado pelo handler do passo anterior. Se qualquer passo falha, os passos já executados são compensados.</p>
+<h2 id="exemplo-completo-pedido-de-compra">Exemplo Completo — Pedido de Compra<a class="headerlink" href="#exemplo-completo-pedido-de-compra" title="Permanent link">&para;</a></h2>
+<h3 id="1-definir-a-mensagem">1. Definir a mensagem<a class="headerlink" href="#1-definir-a-mensagem" title="Permanent link">&para;</a></h3>
+<p><code>pascal
+type
+  TPedidoCriado = record
+    PedidoId: Integer;
+    Cliente: string;
+    Total: Currency;
+  end;</code></p>
+<h3 id="2-publicar">2. Publicar<a class="headerlink" href="#2-publicar" title="Permanent link">&para;</a></h3>
+<p>`pascal
+var
+  LBus: IMessageBus;
+begin
+  LBus := TMessageBusFactory.Criar
+    .Provider(pRabbitMQ)
+    .Host('localhost')
+    .Construir;</p>
+<p>LBus.Publicar<TPedidoCriado>(
+    TPedidoCriado.Create(
+      42, 'Empresa X', 1500.00
+    )
+  );
+end;
+`</p>
+<h3 id="3-consumir-com-retry">3. Consumir com retry<a class="headerlink" href="#3-consumir-com-retry" title="Permanent link">&para;</a></h3>
+<p><code>pascal
+LBus.Consumir&lt;TPedidoCriado&gt;(
+  procedure(const AMsg: TPedidoCriado)
+  begin
+    // Se lançar exceção, o bus retenta automaticamente
+    Faturamento.Faturar(AMsg.PedidoId);
+  end
+);</code></p>
+<h3 id="4-configurar-circuit-breaker">4. Configurar circuit breaker<a class="headerlink" href="#4-configurar-circuit-breaker" title="Permanent link">&para;</a></h3>
+<p><code>pascal
+LBus := TMessageBusFactory.Criar
+  .Provider(pRabbitMQ)
+  .Host('localhost')
+  .ConfigurarCircuitBreaker(5, 30000)  // 5 falhas, 30s de abertura
+  .Construir;</code></p>
+<h3 id="5-habilitar-outbox">5. Habilitar outbox<a class="headerlink" href="#5-habilitar-outbox" title="Permanent link">&para;</a></h3>
+<p><code>pascal
+LBus := TMessageBusFactory.Criar
+  .Provider(pRabbitMQ)
+  .Host('localhost')
+  .ConfigurarOutbox(
+    TConexaoFactory.Criar
+      .Driver('SQLite')
+      .Database('outbox.db')
+      .Conectar
+  )
+  .Construir;</code></p>
+<p>Agora toda chamada a Publicar dentro de uma transação é enfileirada na outbox e enviada de forma confiável.</p>
+<h2 id="configuracoes">Configurações<a class="headerlink" href="#configuracoes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Descrição</th>
+<th>Padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RetryCount</td>
+<td>Número de tentativas</td>
+<td>3</td>
+</tr>
+<tr>
+<td>RetryDelayMs</td>
+<td>Atraso inicial entre tentativas</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>RetryMaxDelayMs</td>
+<td>Atraso máximo (backoff)</td>
+<td>8000</td>
+</tr>
+<tr>
+<td>CircuitBreakerThreshold</td>
+<td>Falhas para abrir circuito</td>
+<td>5</td>
+</tr>
+<tr>
+<td>CircuitBreakerTimeoutMs</td>
+<td>Tempo de abertura do circuito</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>OutboxEnabled</td>
+<td>Habilita outbox</td>
+<td>false</td>
+</tr>
+<tr>
+<td>OutboxPollingIntervalMs</td>
+<td>Intervalo de verificação da outbox</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
 
 
 
