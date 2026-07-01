@@ -9,19 +9,8 @@ __recovery/
 Dist/
 site/
 # License server (private repo: minusframework-license-server)
-license-server/.gitignore
-license-server/server.js
-license-server/generate-keys.js
-license-server/package.json
-license-server/install-service.ps1
-license-server/install-service.bat
-license-server/uninstall-service.bat
-license-server/nssm/
-license-server/private.pem
-license-server/public.pem
-license-server/logs/
-license-server/node_modules/
-license-server/package-lock.json
+license-server/*
+!license-server/LICENSE-SERVER.md
 # Submodule directories (source code lives in their own repos)
 AI/
 Cli/
