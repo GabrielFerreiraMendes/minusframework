@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/GabrielFerreiraMendes/minusframework/main/docs/assets/images/logo.svg" alt="MinusFrameWork" width="400">
+  <img src="https://raw.githubusercontent.com/GabrielFerreiraMendes/minusframework/main/docs/assets/images/Logo%20Minus.png" alt="MinusFrameWork" width="400">
 </p>
 
 <p align="center">
