@@ -4,10 +4,12 @@
 
 | | Free | Pro | Enterprise |
 |---|:---:|:---:|:---:|
-| **Preço (BRL)** | R$ 0 | R$ 197/ano | R$ 497/ano |
+| **Preço (BRL)** | R$ 0 | **R$ 197/ano** | **R$ 497/ano** |
+| **Licença** | MIT | Perpétua | Perpétua |
 | **Desenvolvedores** | 1 | 1 | até 5 por bloco |
-| **Atualizações** | — | 12 meses | Perpétua |
+| **Atualizações** | — | 12 meses inclusos | 12 meses inclusos |
 | **Suporte** | Comunidade | E-mail 48h | Prioritário 12h |
+| **Renovação** | — | Anual (opcional) | Anual (opcional) |
 | | | | |
 | **MinusORM** (SQLite) | Sim | Sim | Sim |
 | **MinusORM** (7 bancos) | — | Sim | Sim |
@@ -96,7 +98,10 @@ O objetivo é que o projeto se sustente comercialmente pelas licenças **Pro** e
 ## Dúvidas Frequentes
 
 **Preciso pagar todo ano?**
-A licença Pro tem validade de 12 meses com direito a atualizações. A Enterprise é perpétua — você usa para sempre, e a assinatura cobre atualizações e suporte.
+Não. A licença Pro e Enterprise são **perpétuas** — o software continua funcionando mesmo sem renovar. A renovação anual é opcional e dá direito a novas versões e suporte durante o período.
+
+**O que acontece se eu não renovar?**
+Você continua usando a versão que tinha no momento da renovação anterior. Apenas perde acesso a novas versões e suporte técnico.
 
 **Posso usar em mais de uma máquina?**
 Sim, desde que o mesmo desenvolvedor. Cada licença é por desenvolvedor, não por máquina.
@@ -109,5 +114,8 @@ Calcule: divida o número de desenvolvedores por 5 e arredonde para cima.
 
 **Posso atualizar do Free para o Pro?**
 Sim. Basta adquirir a chave Pro e aplicar no mesmo instalador — sem precisar reinstalar nada.
+
+**Preciso renovar todo ano para continuar usando?**
+Não. A licença Pro e Enterprise são perpétuas. O software continua funcionando mesmo sem renovar. A renovação é opcional e dá direito a novas versões e suporte por mais 12 meses.
 
 Consulte a página [Licenciamento](licensing.md) para detalhes legais.

@@ -12,7 +12,7 @@ O MinusFrameWork é distribuído em três tiers de licença. Cada tier dá acess
 | MinusMigrator | Sim |
 | MinusCLI | Sim |
 
-**Licença:** MIT. Código-fonte aberto, uso livre para projetos pessoais e aprendizado.
+**Licença:** MIT. Código-fonte aberto, uso livre para projetos pessoais e aprendizado. Nenhuma renovação necessária.
 
 **Restrições:** ORM limitado ao driver SQLite. Demais bancos (Firebird, PostgreSQL, MySQL, MariaDB, MSSQL, Oracle) não estão disponíveis.
 
@@ -31,7 +31,7 @@ Tudo do **Free**, mais:
 | MinusExtensions | Sim |
 | MinusFeatureFlags | Sim |
 
-**Uso comercial permitido** mediante aquisição de licença. Inclui atualizações por 12 meses.
+**Uso comercial permitido** mediante aquisição de licença. Licença **perpétua** — o software funciona indefinidamente. Inclui atualizações e suporte por 12 meses. Renovação anual opcional para continuar recebendo novas versões.
 
 ---
 
@@ -48,6 +48,8 @@ Tudo do **Pro**, mais:
 | Licença perpétua | Sim |
 
 Ideal para empresas que exigem suporte dedicado, implantação on-premise e acesso a todos os módulos do ecossistema.
+
+**Modelo:** Licença perpétua com 12 meses de atualizações e suporte inclusos. Renovação anual opcional.
 
 ---
 
