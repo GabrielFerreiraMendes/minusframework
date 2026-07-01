@@ -87,9 +87,9 @@ O objetivo é que o projeto se sustente comercialmente pelas licenças **Pro** e
 ![QR Code Pix](assets/images/QR.jpeg){ width="60%" }
 
 **Pix (copia e cola):**
-`
+```
 00020126580014br.gov.bcb.pix01364214aaa8-d6d1-4d01-81c1-7a0835fdc5b25204000053039865802BR5915MENDESGABRIEL986009Sao Paulo610901227-20062230519daqr113812089121688630461AF
-`
+```
 
 ---
 
