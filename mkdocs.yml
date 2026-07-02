@@ -123,4 +123,10 @@ nav:
 extra_css:
   - assets/custom.css
 
-copyright: "&copy; 2026 MinusFrameWork &middot; Free (MIT) · Pro · Enterprise"
+copyright: |
+  <div style="display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem">
+    <img src="https://img.shields.io/badge/Delphi-11+-E2243D?logo=delphi&logoColor=white" alt="Delphi 11+">
+    <img src="https://img.shields.io/badge/Win32%20|%20Win64-0078D4?logo=windows&logoColor=white" alt="Platform">
+    <img src="https://img.shields.io/badge/Licença-MIT-brightgreen" alt="Licença">
+  </div>
+  &copy; 2026 MinusFrameWork &middot; Free (MIT) &middot; Pro &middot; Enterprise
