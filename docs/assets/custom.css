@@ -11,42 +11,16 @@
   width: auto;
 }
 
-/* Nome do site ao lado do logo — mais legível */
-.md-header__topic:first-child .md-ellipsis {
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
+/* Oculta o texto do nome ao lado do logo — só a logo aparece */
+.md-header__topic {
+  display: none;
 }
 
 /* --- Hero Section (homepage) -------------------------------------------- */
 
 .hero {
   text-align: center;
-  padding: 2.5rem 1rem 2rem;
-}
-
-.hero img {
-  max-width: 320px;
-  width: 100%;
-  height: auto;
-  margin-bottom: 0.5rem;
-}
-
-.hero .hero-tagline {
-  font-size: 1.15rem;
-  color: var(--md-default-fg-color--light);
-  margin-bottom: 1.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero .hero-badges {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  padding: 1rem 1rem 1.5rem;
 }
 
 .hero .hero-cta {
@@ -157,10 +131,6 @@
 /* --- Responsive adjustments --------------------------------------------- */
 
 @media (max-width: 600px) {
-  .hero img {
-    max-width: 220px;
-  }
-
   .module-grid {
     grid-template-columns: 1fr;
   }

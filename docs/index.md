@@ -1,16 +1,5 @@
 ﻿<div class="hero" markdown>
 
-<p class="hero-tagline">
-  O framework Delphi completo para aplicações corporativas.<br>
-  ORM · Migrator · Mensageria · Feature Flags · Telemetria · IA
-</p>
-
-<div class="hero-badges">
-  <img src="https://img.shields.io/badge/Delphi-11+-E2243D?logo=delphi&logoColor=white" alt="Delphi 11+">
-  <img src="https://img.shields.io/badge/Win32%20|%20Win64-0078D4?logo=windows&logoColor=white" alt="Platform">
-  <img src="https://img.shields.io/badge/Licença-MIT-brightgreen" alt="Licença">
-</div>
-
 <div class="hero-cta">
   <a href="getting-started/" class="md-button md-button--primary">Começar agora →</a>
   <a href="pricing/" class="md-button">Ver planos</a>
@@ -114,22 +103,3 @@ Agentes inteligentes e servidor MCP (Model Context Protocol) para Delphi.
 </div>
 
 </div>
-
----
-
-## Requisitos
-
-| Requisito | Mínimo |
-|-----------|--------|
-| **IDE** | RAD Studio 11 Alexandria ou superior |
-| **DB Engine** | FireDAC (nativo) |
-| **Plataforma** | Windows (Win32 / Win64) |
-
----
-
-## Suporte
-
-| Canal | |
-|-------|---|
-| :material-github: GitHub Issues | [Abrir Issue](https://github.com/GabrielFerreiraMendes/minusframework/issues) |
-| :material-email-outline: E-mail | [gabrielferreiramendes.dev@gmail.com](mailto:gabrielferreiramendes.dev@gmail.com) |
