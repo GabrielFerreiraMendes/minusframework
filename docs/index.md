@@ -1,7 +1,18 @@
----
-sidebar_position: 1
+﻿---
+title: Documentação
+slug: /docs
 ---
 
-# MinusFrameWork
+# Documentação do MinusFrameWork
 
-Framework Delphi completo — ORM, Migrator, Mensageria, Feature Flags, Telemetria e IA.
+Bem-vindo à documentação oficial.
+
+- [Guia de início rápido](/docs/getting-started)
+- [ORM](/docs/orm/)
+- [CLI](/docs/cli/)
+- [Migrator](/docs/migrator/)
+- [Mensageria](/docs/messaging/)
+- [Extensões](/docs/extensions/)
+- [Feature Flags](/docs/modules/FeatureFlags/)
+- [Telemetria](/docs/telemetry/)
+- [MinusAI](/docs/ai/)

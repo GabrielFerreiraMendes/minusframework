@@ -32,6 +32,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/GabrielFerreiraMendes/minusframework/edit/main/docs/',
+
         },
         blog: false,
         theme: {
