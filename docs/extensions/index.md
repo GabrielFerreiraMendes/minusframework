@@ -1,6 +1,9 @@
 ---
-title: "Index"
+title: MinusExtensions
+sidebar_label: MinusExtensions
 ---
+
+<span class="badge badge-pro">Pro</span>
 
 ﻿# MinusExtensions
 

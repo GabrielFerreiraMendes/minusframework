@@ -2,6 +2,8 @@
 title: "Auditoria"
 ---
 
+<span class="badge badge-pro">Pro</span>
+
 # Auditoria
 
 Rastreia automaticamente quem criou, alterou ou deletou registros e quando.

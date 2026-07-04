@@ -2,6 +2,8 @@
 title: "CLI — Comandos"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # CLI — Comandos
 
 A CLI `minus.exe` é uma ferramenta de scaffolding que acelera a criação de projetos e entidades.

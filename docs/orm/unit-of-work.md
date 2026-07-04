@@ -2,6 +2,8 @@
 title: "Unit of Work"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # Unit of Work
 
 Gerencia transações, change tracking e identity map para garantir consistência.

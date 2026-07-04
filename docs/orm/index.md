@@ -2,6 +2,8 @@
 title: "MinusORM"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # MinusORM
 
 ORM com RTTI, queries fluentes, Unit of Work e 7 providers de banco.

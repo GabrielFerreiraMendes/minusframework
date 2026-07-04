@@ -2,6 +2,8 @@
 title: "Sagas"
 ---
 
+<span class="badge badge-pro">Pro</span>
+
 # Sagas
 
 Sagas são fluxos de trabalho transacionais de longa duração com lógica de compensação para sistemas distribuídos.

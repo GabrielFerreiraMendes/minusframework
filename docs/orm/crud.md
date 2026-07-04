@@ -2,6 +2,8 @@
 title: "CRUD Básico"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # CRUD Básico
 
 ## Configuração da Conexão

@@ -2,6 +2,8 @@
 title: "`make:entity`"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # `make:entity`
 
 Gera uma entidade ORM completa com atributos de mapeamento.

@@ -2,6 +2,8 @@
 title: "Ferramentas MCP"
 ---
 
+<span class="badge badge-enterprise">Enterprise</span>
+
 # Ferramentas MCP
 
 ## `explicar_codigo`

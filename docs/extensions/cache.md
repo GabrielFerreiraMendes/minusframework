@@ -2,6 +2,8 @@
 title: "Cache"
 ---
 
+<span class="badge badge-pro">Pro</span>
+
 # Cache
 
 Sistema de cache em dois níveis: L1 (identity map) e L2 (cache distribuído opcional).

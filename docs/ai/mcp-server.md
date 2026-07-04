@@ -2,6 +2,8 @@
 title: "MCP Server"
 ---
 
+<span class="badge badge-enterprise">Enterprise</span>
+
 # MCP Server
 
 O servidor MCP (Model Context Protocol) expõe ferramentas de IA para consulta e geração de código Delphi, seguindo o padrão JSON-RPC 2.0 sobre stdio.

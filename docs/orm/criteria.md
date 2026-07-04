@@ -2,6 +2,8 @@
 title: "Criteria API"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # Criteria API
 
 Consulta type-safe fluente sem escrever SQL manualmente.
