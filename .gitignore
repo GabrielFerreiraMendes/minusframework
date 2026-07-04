@@ -15,15 +15,15 @@ site/
 license-server/*
 !license-server/LICENSE-SERVER.md
 # Submodule directories (source code lives in their own repos)
-AI/
-Cli/
-Core/
-Extensions/
-FeatureFlags/
-Messaging/
-Migrator/
-ORM/
-Telemetry/
+/AI/
+/Cli/
+/Core/
+/Extensions/
+/FeatureFlags/
+/Messaging/
+/Migrator/
+/ORM/
+/Telemetry/
 # Node / Docusaurus
 node_modules/
 build/
