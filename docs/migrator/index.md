@@ -2,6 +2,8 @@
 title: "MinusMigrator"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # MinusMigrator
 
 Migração versionada de schema de banco de dados — estilo Liquibase/Flyway para Delphi.

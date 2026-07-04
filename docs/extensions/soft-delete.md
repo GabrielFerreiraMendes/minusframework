@@ -2,6 +2,8 @@
 title: "Soft Delete"
 ---
 
+<span class="badge badge-pro">Pro</span>
+
 # Soft Delete
 
 Deleção lógica automática: registros não são removidos fisicamente, apenas marcados como inativos.

@@ -2,6 +2,8 @@
 title: "CLI — MinusMigrator"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # CLI — MinusMigrator
 
 A ferramenta de linha de comando para gerenciar migrações de banco de dados.

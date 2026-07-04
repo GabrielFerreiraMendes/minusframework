@@ -2,6 +2,8 @@
 title: "CLI — MinusFrameWork Command Line"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # CLI — MinusFrameWork Command Line
 
 A ferramenta de linha de comando `minus.exe` oferece scaffolding rápido para projetos Delphi com MinusORM e Horse.

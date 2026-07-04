@@ -2,6 +2,8 @@
 title: "Configuração"
 ---
 
+<span class="badge badge-pro">Pro</span>
+
 # Configuração
 
 ## Instalação do Provider

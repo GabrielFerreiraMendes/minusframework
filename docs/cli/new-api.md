@@ -2,6 +2,8 @@
 title: "`new api`"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # `new api`
 
 Cria um projeto REST API completo com servidor Horse + MinusORM.

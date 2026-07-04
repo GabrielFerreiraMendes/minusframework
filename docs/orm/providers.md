@@ -2,6 +2,8 @@
 title: "Providers"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # Providers
 
 O MinusORM suporta 7 bancos de dados via FireDAC.

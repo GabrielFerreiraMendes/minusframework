@@ -2,6 +2,8 @@
 title: "DLL — C-API"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # DLL — C-API
 
 O MinusMigrator também é distribuído como uma DLL com interface C para integração com outras linguagens.

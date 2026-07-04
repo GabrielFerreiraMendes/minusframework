@@ -2,6 +2,8 @@
 title: "Mapeamento de Entidades"
 ---
 
+<span class="badge badge-free">Free</span>
+
 # Mapeamento de Entidades
 
 ## Atributos de Mapeamento
