@@ -1,5 +1,9 @@
 ﻿<p align="center">
-  <img src="static/img/logo.svg" alt="MinusFrameWork Logo" width="160" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="static/img/logo-icon-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="static/img/logo-icon.svg">
+    <img src="static/img/logo-icon.svg" alt="MinusFrameWork" width="64" />
+  </picture>
 </p>
 
 <h1 align="center">MinusFrameWork</h1>
