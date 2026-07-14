@@ -7,6 +7,7 @@ import (
     "os"
     "github.com/gin-gonic/gin"
     "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/handler"
+    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/middleware"
     "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
 )
 
@@ -28,6 +29,15 @@ func main() {
     authHandler := handler.NewAuthHandler(db)
     r.GET("/auth/github/login", authHandler.LoginRedirect)
     r.GET("/auth/github/callback", authHandler.Callback)
+
+    licenseHandler := handler.NewLicenseHandler(db)
+
+    authorized := r.Group("/", middleware.AuthRequired(os.Getenv("JWT_SECRET")))
+    authorized.POST("/licenses/generate", licenseHandler.Generate)
+    authorized.POST("/licenses/validate", licenseHandler.Validate)
+    authorized.POST("/licenses/activate", licenseHandler.Activate)
+    authorized.POST("/licenses/deactivate", licenseHandler.Deactivate)
+    authorized.GET("/licenses/mine", licenseHandler.ListMine)
 
     r.GET("/health", func(c *gin.Context) {
         c.JSON(http.StatusOK, gin.H{"status": "ok"})
