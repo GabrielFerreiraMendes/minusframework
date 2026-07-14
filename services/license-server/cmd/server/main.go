@@ -6,6 +6,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
+    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/handler"
     "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
 )
 
@@ -23,6 +24,10 @@ func main() {
     defer db.Close()
 
     r := gin.Default()
+
+    authHandler := handler.NewAuthHandler(db)
+    r.GET("/auth/github/login", authHandler.LoginRedirect)
+    r.GET("/auth/github/callback", authHandler.Callback)
 
     r.GET("/health", func(c *gin.Context) {
         c.JSON(http.StatusOK, gin.H{"status": "ok"})
