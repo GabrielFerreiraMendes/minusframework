@@ -55,5 +55,18 @@ services:
     depends_on:
       - postgres
 
+  feature-flags:
+    build: ./feature-flags
+    ports:
+      - "8083:8083"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/minusframework?sslmode=disable
+      LISTEN_ADDR: ":8083"
+      JWT_SECRET: ${JWT_SECRET}
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
 volumes:
   pgdata:
