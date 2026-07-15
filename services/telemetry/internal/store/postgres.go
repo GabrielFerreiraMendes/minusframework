@@ -116,9 +116,9 @@ func (s *Store) GetDashboardSummary(ctx context.Context, licenseKey string) (map
 
 	s.pool.QueryRow(ctx,
 		`SELECT COALESCE(
-            (SELECT COUNT(*)::float / NULLIF(COUNT(*), 0) * 100
+            (SELECT COUNT(*) FILTER (WHERE status = 'error')::float / NULLIF(COUNT(*), 0) * 100
              FROM spans
-             WHERE license_key = $1 AND start_time > now() - interval '1 hour' AND status = 'error'),
+             WHERE license_key = $1 AND start_time > now() - interval '1 hour'),
          0)`,
 		licenseKey,
 	).Scan(&errorRate)

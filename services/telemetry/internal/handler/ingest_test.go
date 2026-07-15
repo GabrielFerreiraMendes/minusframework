@@ -49,7 +49,7 @@ func setupRouter(store Store, validator middleware.LicenseValidator) *gin.Engine
 	r := gin.New()
 	h := NewIngestHandler(store)
 	r.GET("/api/v1/config", h.GetConfig)
-	ingest := r.Group("/v1", APIKeyRequired(validator))
+	ingest := r.Group("/v1", middleware.APIKeyRequired(validator))
 	ingest.POST("/traces", h.IngestTraces)
 	ingest.POST("/metrics", h.IngestMetrics)
 	return r
