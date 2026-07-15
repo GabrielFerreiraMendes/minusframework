@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"os"
 	"github.com/gin-gonic/gin"
+	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/handler"
+	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/middleware"
 	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
 )
 
@@ -26,6 +28,14 @@ func main() {
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
+
+	ingestHandler := handler.NewIngestHandler(db)
+
+	r.GET("/api/v1/config", ingestHandler.GetConfig)
+
+	ingest := r.Group("/v1", middleware.APIKeyRequired(db))
+	ingest.POST("/traces", ingestHandler.IngestTraces)
+	ingest.POST("/metrics", ingestHandler.IngestMetrics)
 
 	addr := os.Getenv("LISTEN_ADDR")
 	if addr == "" {
