@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: minusframework_test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    ports:
+      - "5433:5432"
+
+  license-server:
+    build: ../license-server
+    ports:
+      - "9080:8080"
+    environment:
+      DATABASE_URL: postgres://test:test@postgres:5432/minusframework_test?sslmode=disable
+      LISTEN_ADDR: ":8080"
+      JWT_SECRET: test-secret
+      GITHUB_CLIENT_ID: test-id
+      GITHUB_CLIENT_SECRET: test-secret
+
+  minusai-review:
+    build: ../minusai-review
+    ports:
+      - "9081:8081"
+    environment:
+      DATABASE_URL: postgres://test:test@postgres:5432/minusframework_test?sslmode=disable
+      LISTEN_ADDR: ":8081"
+      JWT_SECRET: test-secret
+      GITHUB_APP_TOKEN: test-token
