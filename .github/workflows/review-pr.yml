@@ -26,12 +26,12 @@ jobs:
         id: reviewer
         shell: pwsh
         run: |
-          $exe = "${{ github.workspace }}/_reviewer/.github/actions/review-pr/MinusAI_Reviewer.exe"
+          $exe = "$env:GITHUB_WORKSPACE\_reviewer\.github\actions\review-pr\MinusAI_Reviewer.exe"
           if (-not (Test-Path $exe)) {
             Write-Error "MinusAI_Reviewer.exe not found at $exe"
             exit 1
           }
-          $env:GITHUB_TOKEN = "${{ secrets.GITHUB_TOKEN }}"
+          $env:GH_TOKEN = "${{ secrets.GITHUB_TOKEN }}"
           & $exe --repo "${{ github.repository }}" --pr "${{ github.event.pull_request.number }}" --event opened
 
       - name: Approve if review passed
