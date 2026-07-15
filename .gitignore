@@ -15,6 +15,8 @@ site/
 .superpowers/
 # Cloud services (private repo: minusframework-cloud)
 /services/
+# Legacy license server (moved to cloud repo)
+license-server/
 # Submodule directories (source code lives in their own repos)
 /AI/
 /Cli/
