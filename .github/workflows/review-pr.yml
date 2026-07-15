@@ -13,14 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main repo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git clone --depth=50 https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git .
+          gh repo clone ${{ github.repository }} . -- --depth=50
           git fetch origin ${{ github.event.pull_request.head.sha }}
           git checkout ${{ github.event.pull_request.head.sha }}
 
       - name: Checkout review action
-        run: |
-          git clone --depth=1 https://x-access-token:${{ secrets.GH_PAT }}@github.com/minusframework/minusframework-ai.git _reviewer
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: gh repo clone minusframework/minusframework-ai _reviewer -- --depth=1
 
       - name: MinusAI Code Review
         uses: ./_reviewer/.github/actions/review-pr
