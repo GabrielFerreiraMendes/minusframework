@@ -12,7 +12,7 @@ jobs:
   review:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_PAT }}
           fetch-depth: 0
