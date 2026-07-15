@@ -68,6 +68,15 @@ Source: "Staging\Samples\*";           DestDir: "{app}\Samples"; Components: doc
 
 [Code]
 
+// License validation constants
+const
+  LicenseServerUrl = 'https://license.minusframework.dev';
+  TrialDays = 30;
+
+var
+  LicenseKeyPage: TInputQueryWizardPage;
+  LicenseKeyValue: string;
+
 function GetBplDir(Version: string): string;
 begin
   Result := ExpandConstant('{commonappdata}\Embarcadero\Studio\' + Version + '\Bpl');
@@ -81,6 +90,92 @@ end;
 function GetDefaultInstallDir(Param: string): string;
 begin
   Result := ExpandConstant('{pf}\MinusFramework');
+end;
+
+function ValidateLicense(Key: string): Boolean;
+var
+  ResultCode: Integer;
+  TempFile: string;
+  ScriptPath: string;
+begin
+  Result := True;
+
+  if Key = '' then
+  begin
+    MsgBox('No license key entered. A 30-day trial will begin after installation.',
+      mbInformation, MB_OK);
+    Exit;
+  end;
+
+  ScriptPath := ExpandConstant('{src}\scripts\installer-license-check.ps1');
+  if not FileExists(ScriptPath) then
+  begin
+    MsgBox('License validation script not found. Proceeding without validation.',
+      mbError, MB_OK);
+    Exit;
+  end;
+
+  TempFile := ExpandConstant('{tmp}\license_result.txt');
+  if Exec('powershell.exe',
+    '-NoProfile -ExecutionPolicy Bypass -File "' + ScriptPath + '" ' +
+    '-LicenseKey "' + Key + '" -LicenseServerUrl "' + LicenseServerUrl + '" > "' +
+    TempFile + '" 2>&1',
+    '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  then
+  begin
+    if ResultCode = 0 then
+    begin
+      Result := True;
+    end
+      else
+    begin
+      MsgBox('License validation failed (code ' + IntToStr(ResultCode) +
+        '). Please check your license key and try again.', mbError, MB_OK);
+      Result := False;
+    end;
+  end
+    else
+  begin
+    MsgBox('Unable to run license validation. Proceeding with offline mode.',
+      mbError, MB_OK);
+    Result := True;
+  end;
+end;
+
+procedure InitializeWizard;
+begin
+  LicenseKeyPage := CreateInputQueryPage(
+    wpLicense,
+    'License Key',
+    'Enter your MinusFramework license key',
+    'If you have a license key, enter it below. Leave blank to start a 30-day trial.'#13#10 +
+    'Your license key can be found in your MinusFramework account at ' +
+    LicenseServerUrl + '.'
+  );
+  LicenseKeyPage.Add('License Key:', False);
+  LicenseKeyPage.Values[0] := '';
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+  Result := True;
+  if CurPageID = LicenseKeyPage.ID then
+  begin
+    LicenseKeyValue := LicenseKeyPage.Values[0];
+    Result := ValidateLicense(LicenseKeyValue);
+  end;
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  LicensePath: string;
+begin
+  if CurStep = ssPostInstall then
+  begin
+    LicensePath := ExpandConstant('{app}\license.key');
+    if LicenseKeyValue <> '' then
+      SaveStringToFile(LicensePath, LicenseKeyValue, False);
+  end;
 end;
 
 [Icons]
