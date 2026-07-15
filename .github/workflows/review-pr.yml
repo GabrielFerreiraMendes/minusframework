@@ -4,7 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-permissions: {}
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   review:
@@ -17,11 +19,24 @@ jobs:
           git checkout ${{ github.event.pull_request.head.sha }}
 
       - name: Checkout review action
-        run: git clone --depth=1 https://x-access-token:${{ secrets.GH_PAT }}@github.com/minusframework/minusframework-ai.git _reviewer
+        run: |
+          git clone --depth=1 https://x-access-token:${{ secrets.GH_PAT }}@github.com/minusframework/minusframework-ai.git _reviewer
 
-      - name: MinusAI Code Review
-        uses: ./_reviewer/.github/actions/review-pr
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-number: ${{ github.event.pull_request.number }}
-          repo: ${{ github.repository }}
+      - name: Run MinusAI Reviewer
+        id: reviewer
+        shell: pwsh
+        run: |
+          $exe = "${{ github.workspace }}/_reviewer/.github/actions/review-pr/MinusAI_Reviewer.exe"
+          if (-not (Test-Path $exe)) {
+            Write-Error "MinusAI_Reviewer.exe not found at $exe"
+            exit 1
+          }
+          $env:GITHUB_TOKEN = "${{ secrets.GITHUB_TOKEN }}"
+          & $exe --repo "${{ github.repository }}" --pr "${{ github.event.pull_request.number }}" --event opened
+
+      - name: Approve if review passed
+        if: success()
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} --approve --body "MinusAI review passed. No issues found."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
