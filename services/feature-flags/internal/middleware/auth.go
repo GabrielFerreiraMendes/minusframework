@@ -32,7 +32,12 @@ func JWTAuthRequired(jwtSecret string) gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token claims"})
 			return
 		}
-		c.Set("user_id", claims["user_id"])
+		userID, _ := claims["user_id"].(string)
+		if userID == "" {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token: missing user_id"})
+			return
+		}
+		c.Set("user_id", userID)
 		c.Set("email", claims["email"])
 		c.Next()
 	}
