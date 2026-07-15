@@ -30,7 +30,12 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
 
-	hub := service.NewHub()
+	redisURL := os.Getenv("REDIS_URL")
+	if redisURL == "" {
+		redisURL = "redis://localhost:6379"
+	}
+	hub := service.NewHub(redisURL)
+	go hub.StartRedisListener()
 
 	addr := os.Getenv("LISTEN_ADDR")
 	if addr == "" {
@@ -51,7 +56,7 @@ func main() {
 		api.POST("/environments", envHandler.Create)
 		api.DELETE("/environments/:id", envHandler.Delete)
 
-		flagHandler := handler.NewFlagHandler(db)
+		flagHandler := handler.NewFlagHandler(db, hub)
 		api.GET("/flags", flagHandler.List)
 		api.POST("/flags", flagHandler.Create)
 		api.PUT("/flags/:id", flagHandler.Update)

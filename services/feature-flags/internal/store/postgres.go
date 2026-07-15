@@ -80,6 +80,18 @@ func (s *Store) GetLicenseKeyByUserID(ctx context.Context, userID string) (strin
 	return licenseKey, err
 }
 
+func (s *Store) GetFlagByID(ctx context.Context, id string) (*model.Flag, error) {
+	f := &model.Flag{}
+	err := s.pool.QueryRow(ctx,
+		`SELECT f.id, f.key, f.name, f.description, f.flag_type, f.default_variant, f.created_at, f.updated_at
+		 FROM flags f WHERE f.id = $1`, id,
+	).Scan(&f.ID, &f.Key, &f.Name, &f.Description, &f.FlagType, &f.DefaultVariant, &f.CreatedAt, &f.UpdatedAt)
+	if err != nil {
+		return nil, err
+	}
+	return f, nil
+}
+
 func (s *Store) ListFlags(ctx context.Context, licenseKey, environmentID string) ([]*model.Flag, error) {
 	var rows pgx.Rows
 	var err error

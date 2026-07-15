@@ -5,15 +5,17 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/model"
+	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/service"
 	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
 )
 
 type FlagHandler struct {
 	store *store.Store
+	hub   *service.Hub
 }
 
-func NewFlagHandler(s *store.Store) *FlagHandler {
-	return &FlagHandler{store: s}
+func NewFlagHandler(s *store.Store, h *service.Hub) *FlagHandler {
+	return &FlagHandler{store: s, hub: h}
 }
 
 func (h *FlagHandler) List(c *gin.Context) {
@@ -111,11 +113,17 @@ func (h *FlagHandler) Toggle(c *gin.Context) {
 	if req.RolloutPercentage != nil {
 		rollout = *req.RolloutPercentage
 	}
+	flag, err := h.store.GetFlagByID(c.Request.Context(), id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "flag not found"})
+		return
+	}
 	value := &model.FlagValue{FlagID: id, EnvironmentID: req.EnvironmentID, Enabled: req.Enabled, RolloutPercentage: rollout}
 	if err := h.store.UpsertFlagValue(c.Request.Context(), value); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to update flag value"})
 		return
 	}
+	h.hub.PublishToggle(licenseKey, req.EnvironmentID, flag.Key, req.Enabled, nil)
 	h.store.CreateAuditLog(c.Request.Context(), licenseKey, nil, "flag.toggled", "flag_value", value.ID, nil, value)
 	c.JSON(http.StatusOK, value)
 }
