@@ -106,8 +106,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if (Test-Path "deploy-wiki.ps1") {
-            ./deploy-wiki.ps1 -Token "$env:GH_TOKEN"
+          if (Test-Path "scripts/ci/deploy-wiki.ps1") {
+            ./scripts/ci/deploy-wiki.ps1 -Token "$env:GH_TOKEN"
           }
 
   release-sync:
@@ -122,4 +122,4 @@ jobs:
           TOKEN: ${{ secrets.GH_PAT }}
         run: |
           $tag = "${{ github.ref_name }}"
-          pwsh ./release-sync.ps1 -Version $tag -Token "$env:TOKEN"
+          pwsh ./scripts/release/release-sync.ps1 -Version $tag -Token "$env:TOKEN"

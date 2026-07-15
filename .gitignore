@@ -11,9 +11,12 @@ __recovery/
 *.exe
 Dist/
 site/
-# License server (private repo: minusframework-license-server)
-license-server/*
-!license-server/LICENSE-SERVER.md
+# Development artifacts (superpowers SDD)
+.superpowers/
+# Cloud services (private repo: minusframework-cloud)
+/services/
+# Legacy license server (moved to cloud repo)
+license-server/
 # Submodule directories (source code lives in their own repos)
 /AI/
 /Cli/

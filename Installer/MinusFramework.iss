@@ -107,7 +107,7 @@ begin
     Exit;
   end;
 
-  ScriptPath := ExpandConstant('{src}\scripts\installer-license-check.ps1');
+  ScriptPath := ExpandConstant('{src}\scripts\license\installer-license-check.ps1');
   if not FileExists(ScriptPath) then
   begin
     MsgBox('License validation script not found. Proceeding without validation.',

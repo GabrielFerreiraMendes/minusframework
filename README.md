@@ -1,4 +1,4 @@
-<p align="center">
+ï»¿<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="static/img/logo-icon-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="static/img/logo-icon.svg">
@@ -9,7 +9,7 @@
 <h1 align="center">MinusFrameWork</h1>
 
 <p align="center">
-  Framework Delphi moderno, modular e corporativo — ORM, Migrator, Mensageria, Feature Flags, Telemetria e IA
+  Framework Delphi moderno, modular e corporativo ï¿½ ORM, Migrator, Mensageria, Feature Flags, Telemetria e IA
 </p>
 
 <p align="center">
@@ -22,13 +22,13 @@
 
 ## Sobre
 
-**MinusFrameWork** é um framework Delphi focado em produtividade corporativa, seguindo princípios de Clean Architecture, SOLID e Object Calisthenics. Oferece uma suíte modular de componentes que vão do ORM à inteligência artificial, com licenciamento flexível (Free/Pro/Enterprise).
+**MinusFrameWork** ï¿½ um framework Delphi focado em produtividade corporativa, seguindo princï¿½pios de Clean Architecture, SOLID e Object Calisthenics. Oferece uma suï¿½te modular de componentes que vï¿½o do ORM ï¿½ inteligï¿½ncia artificial, com licenciamento flexï¿½vel (Free/Pro/Enterprise).
 
-Este repositório é o **meta-repositório oficial**, contendo a documentação, site, CI/CD, instalador, scripts de automação e arquivos de licenciamento.
+Este repositï¿½rio ï¿½ o **meta-repositï¿½rio oficial**, contendo a documentaï¿½ï¿½o, site, CI/CD, instalador, scripts de automaï¿½ï¿½o e arquivos de licenciamento.
 
-## Documentação
+## Documentaï¿½ï¿½o
 
-A documentação completa está disponível em:
+A documentaï¿½ï¿½o completa estï¿½ disponï¿½vel em:
 
 - ?? **Site publicado**: [gabrielferreiramendes.github.io/minusframework](https://gabrielferreiramendes.github.io/minusframework/)
 - ?? **Docs locais**: `./docs/` (formato Docusaurus)
@@ -40,58 +40,58 @@ npm ci
 npm start
 ```
 
-Acesse `http://localhost:3000/minusframework/`. Para build de produção:
+Acesse `http://localhost:3000/minusframework/`. Para build de produï¿½ï¿½o:
 
 ```bash
 npm run build
 npx docusaurus serve
 ```
 
-## Módulos
+## Mï¿½dulos
 
-| Módulo | Categoria | Licença | Descrição |
+| Mï¿½dulo | Categoria | Licenï¿½a | Descriï¿½ï¿½o |
 |--------|-----------|---------|-----------|
 | MinusORM | ORM | Free | ORM com RTTI, queries fluentes, Unit of Work e Change Tracking |
-| MinusMigrator | Migrator | Free | Migração versionada de schema via CLI, GUI e DLL |
+| MinusMigrator | Migrator | Free | Migraï¿½ï¿½o versionada de schema via CLI, GUI e DLL |
 | MinusCLI | CLI | Free | Scaffolding de entidades, APIs e projetos |
 | MinusFeatureFlags | Feature Flags | Pro | Feature flags com rollout percentual, A/B testing, SSE e REST API |
 | MinusMessaging | Mensageria | Pro | Message bus multi-provider com retry, circuit breaker, sagas e outbox |
-| MinusExtensions | Extensões | Pro | Integrações prontas para Horse, JWT e bibliotecas de terceiros |
-| MinusTelemetry | Telemetria | Enterprise | Tracing e logging estruturado no padrão OpenTelemetry |
-| MinusAI | Inteligência Artificial | Enterprise | Agentes inteligentes e servidor MCP para Delphi |
+| MinusExtensions | Extensï¿½es | Pro | Integraï¿½ï¿½es prontas para Horse, JWT e bibliotecas de terceiros |
+| MinusTelemetry | Telemetria | Enterprise | Tracing e logging estruturado no padrï¿½o OpenTelemetry |
+| MinusAI | Inteligï¿½ncia Artificial | Enterprise | Agentes inteligentes e servidor MCP para Delphi |
 
-## Estrutura do repositório
+## Estrutura do repositï¿½rio
 
 ```
 MinusFrameWork-Meta/
-+-- docs/              # Documentação (Docusaurus)
-+-- src/               # Código-fonte do site (React)
-+-- i18n/              # Traduções (pt-BR, en)
-+-- static/            # Assets estáticos (imagens, 404, robots)
++-- docs/              # Documentaï¿½ï¿½o (Docusaurus)
++-- src/               # Cï¿½digo-fonte do site (React)
++-- i18n/              # Traduï¿½ï¿½es (pt-BR, en)
++-- static/            # Assets estï¿½ticos (imagens, 404, robots)
 +-- .github/workflows/ # CI/CD (docs, wiki, release)
 +-- site/              # Site do instalador
-+-- AI/                # Módulo de IA
-+-- Cli/               # Módulo CLI
-+-- Core/              # Núcleo do framework
-+-- FeatureFlags/      # Módulo de feature flags
-+-- Messaging/         # Módulo de mensageria
-+-- Migrator/          # Módulo de migração
-+-- ORM/               # Módulo ORM
-+-- Telemetry/         # Módulo de telemetria
-+-- Extensions/        # Extensões para terceiros
++-- AI/                # Mï¿½dulo de IA
++-- Cli/               # Mï¿½dulo CLI
++-- Core/              # Nï¿½cleo do framework
++-- FeatureFlags/      # Mï¿½dulo de feature flags
++-- Messaging/         # Mï¿½dulo de mensageria
++-- Migrator/          # Mï¿½dulo de migraï¿½ï¿½o
++-- ORM/               # Mï¿½dulo ORM
++-- Telemetry/         # Mï¿½dulo de telemetria
++-- Extensions/        # Extensï¿½es para terceiros
 +-- Installer/         # Instalador Inno Setup
 +-- license-server/    # Servidor de licenciamento
 +-- .superpowers/      # Planos e specs de design
-+-- scripts *.ps1      # Scripts de automação (release, CI, wiki)
++-- scripts/           # Scripts de automaï¿½ï¿½o (release, CI, wiki, installer, license)
 ```
 
 ## Planos e licenciamento
 
-| Plano | Acesso | Preço |
+| Plano | Acesso | Preï¿½o |
 |-------|--------|-------|
-| **Free** | ORM, Migrator, CLI | MIT — gratuito |
-| **Pro** | + Feature Flags, Messaging, Extensions | R$ 29/mês ou R$ 197/ano |
-| **Enterprise** | + Telemetria, AI | R$ 69/mês ou R$ 497/ano |
+| **Free** | ORM, Migrator, CLI | MIT ï¿½ gratuito |
+| **Pro** | + Feature Flags, Messaging, Extensions | R$ 29/mï¿½s ou R$ 197/ano |
+| **Enterprise** | + Telemetria, AI | R$ 69/mï¿½s ou R$ 497/ano |
 
 ?? **Licenciamento**: Consulte [LICENSE](./LICENSE) e [LICENSE-SERVER.md](./LICENSE-SERVER.md) para detalhes completos.
 
@@ -99,42 +99,42 @@ MinusFrameWork-Meta/
 
 O pipeline automatiza:
 
-- **Build**: documentação Docusaurus (pt-BR + en)
-- **Preview**: deploy em subdiretório para revisão em pull requests
-- **Wiki**: sincronização automática do wiki do repositório
-- **Release**: versionamento e sincronização entre submódulos
+- **Build**: documentaï¿½ï¿½o Docusaurus (pt-BR + en)
+- **Preview**: deploy em subdiretï¿½rio para revisï¿½o em pull requests
+- **Wiki**: sincronizaï¿½ï¿½o automï¿½tica do wiki do repositï¿½rio
+- **Release**: versionamento e sincronizaï¿½ï¿½o entre submï¿½dulos
 
 ## Desenvolvimento
 
-### Pré-requisitos
+### Prï¿½-requisitos
 
 - Node.js >= 20
-- Delphi (para os módulos do framework)
+- Delphi (para os mï¿½dulos do framework)
 - Git LFS (para assets grandes)
 
-### Scripts disponíveis
+### Scripts disponï¿½veis
 
-| Comando | Descrição |
+| Comando | Descriï¿½ï¿½o |
 |---------|-----------|
 | `npm start` | Inicia servidor de desenvolvimento Docusaurus |
-| `npm run build` | Build de produção do site |
+| `npm run build` | Build de produï¿½ï¿½o do site |
 | `npm run serve` | Serve o build localmente |
-| `./release.ps1` | Script de release automatizada |
-| `./ci-setup.ps1` | Configuração de CI local |
-| `./deploy-wiki.ps1` | Deploy do wiki para GitHub |
+| `./scripts/release/release.ps1` | Script de release automatizada |
+| `./scripts/ci/ci-setup.ps1` | ConfiguraÃ§Ã£o de CI local |
+| `./scripts/ci/deploy-wiki.ps1` | Deploy do wiki para GitHub |
 
-## Contribuição
+## Contribuiï¿½ï¿½o
 
-1. Faça um fork do repositório
+1. Faï¿½a um fork do repositï¿½rio
 2. Crie uma branch: `git checkout -b feature/minha-feature`
-3. Commit suas mudanças: `git commit -m "feat: descrição concisa"`
+3. Commit suas mudanï¿½as: `git commit -m "feat: descriï¿½ï¿½o concisa"`
 4. Push: `git push origin feature/minha-feature`
 5. Abra um Pull Request
 
-Veja o [guia de contribuição](https://gabrielferreiramendes.github.io/minusframework/docs/getting-started) para mais detalhes.
+Veja o [guia de contribuiï¿½ï¿½o](https://gabrielferreiramendes.github.io/minusframework/docs/getting-started) para mais detalhes.
 
 ---
 
 <p align="center">
-  <sub>© 2026 Gabriel Ferreira Mendes. Free modules sob licença MIT. Módulos Pro e Enterprise sob licença comercial.</sub>
+  <sub>ï¿½ 2026 Gabriel Ferreira Mendes. Free modules sob licenï¿½a MIT. Mï¿½dulos Pro e Enterprise sob licenï¿½a comercial.</sub>
 </p>

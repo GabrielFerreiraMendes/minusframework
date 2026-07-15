@@ -22,7 +22,7 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          & .\Installer\build-installer.ps1 -Token $env:GH_PAT
+          & .\scripts\installer\build-installer.ps1 -Token $env:GH_PAT
 
       - name: Upload Installer
         uses: actions/upload-artifact@v4
