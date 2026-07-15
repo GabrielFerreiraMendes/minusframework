@@ -21,7 +21,7 @@ import (
     "net/http"
     "time"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 type DashboardHandler struct {

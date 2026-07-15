@@ -28,7 +28,7 @@ mkdir -p services/telemetry/sdk
 mkdir -p services/telemetry/web/templates
 mkdir -p services/telemetry/web/static
 cd services/telemetry
-go mod init github.com/GabrielFerreiraMendes/minusframework/services/telemetry
+go mod init github.com/minusframework/minusframework/services/telemetry
 go get github.com/gin-gonic/gin
 go get github.com/jackc/pgx/v5
 go get github.com/golang-jwt/jwt/v5
@@ -156,7 +156,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 func main() {

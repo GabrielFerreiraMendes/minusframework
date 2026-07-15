@@ -39,7 +39,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/GabrielFerreiraMendes/minusframework/edit/main/docs/',
+          editUrl: 'https://github.com/minusframework/minusframework/edit/main/docs/',
           breadcrumbs: true,
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
@@ -91,7 +91,7 @@ const config: Config = {
         {to: '/about', label: 'Sobre', position: 'left'},
         {to: '/licensing', label: 'Licenciamento', position: 'left'},
         {
-          href: 'https://github.com/GabrielFerreiraMendes/minusframework',
+          href: 'https://github.com/minusframework/minusframework',
           label: 'GitHub',
           position: 'right',
         },
@@ -135,7 +135,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Issues',
-              href: 'https://github.com/GabrielFerreiraMendes/minusframework/issues',
+              href: 'https://github.com/minusframework/minusframework/issues',
             },
             {
               label: 'E-mail',

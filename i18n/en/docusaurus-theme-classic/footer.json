@@ -37,7 +37,7 @@
   },
   "link.item.label.GitHub Issues": {
     "message": "GitHub Issues",
-    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/GabrielFerreiraMendes/minusframework/issues"
+    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/minusframework/minusframework/issues"
   },
   "link.item.label.E-mail": {
     "message": "Email",

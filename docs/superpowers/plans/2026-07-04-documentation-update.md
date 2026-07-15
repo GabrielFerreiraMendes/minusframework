@@ -310,7 +310,7 @@ Add to `presets.docs` config:
 ```typescript
 docs: {
   sidebarPath: './sidebars.ts',
-  editUrl: 'https://github.com/GabrielFerreiraMendes/minusframework/edit/main/docs/',
+  editUrl: 'https://github.com/minusframework/minusframework/edit/main/docs/',
   breadcrumbs: true,
   showLastUpdateTime: true,
   showLastUpdateAuthor: true,
@@ -428,7 +428,7 @@ Create `i18n/en/docusaurus-theme-classic/footer.json`:
   },
   "link.item.label.GitHub Issues": {
     "message": "GitHub Issues",
-    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/GabrielFerreiraMendes/minusframework/issues"
+    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/minusframework/minusframework/issues"
   },
   "link.item.label.E-mail": {
     "message": "Email",

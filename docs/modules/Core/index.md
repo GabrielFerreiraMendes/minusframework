@@ -10,4 +10,4 @@ Núcleo compartilhado do MinusFrameWork: conexão com banco de dados, atributos 
 
 ## Repositório
 
-[minusframework-core](https://github.com/GabrielFerreiraMendes/minusframework-core)
+[minusframework-core](https://github.com/minusframework/minusframework-core)

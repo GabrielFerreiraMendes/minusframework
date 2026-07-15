@@ -123,7 +123,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 func APIKeyRequired(s *store.Store) gin.HandlerFunc {
@@ -190,8 +190,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/model"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 type IngestHandler struct {
@@ -345,14 +345,14 @@ func (s *Store) GetDashboardSummary(ctx context.Context, licenseKey string) (map
 }
 ```
 
-Add imports: `"time"`, `"github.com/jackc/pgx/v5"`, `"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/model"`
+Add imports: `"time"`, `"github.com/jackc/pgx/v5"`, `"github.com/minusframework/minusframework/services/telemetry/internal/model"`
 
 - [ ] **Step 7: Wire routes in cmd/server/main.go**
 
 ```go
 import (
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/handler"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/middleware"
+    "github.com/minusframework/minusframework/services/telemetry/internal/handler"
+    "github.com/minusframework/minusframework/services/telemetry/internal/middleware"
 )
 
 // After r := gin.Default()

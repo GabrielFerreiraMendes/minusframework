@@ -136,7 +136,7 @@ package middleware
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 func APIKeyRequired(s *store.Store) gin.HandlerFunc {
@@ -165,8 +165,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/model"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 type EnvironmentHandler struct {
@@ -222,8 +222,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/model"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 type FlagHandler struct {
@@ -385,8 +385,8 @@ func (s *Store) CreateAuditLog(ctx context.Context, licenseKey string, actorID *
 
 ```go
 import (
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/handler"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/middleware"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/handler"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/middleware"
 )
 
 // After r := gin.Default()

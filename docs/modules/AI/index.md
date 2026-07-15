@@ -16,4 +16,4 @@ Servidor MCP (Model Context Protocol) e agentes inteligentes para aplicações D
 
 ## Repositório
 
-[minusframework-ai](https://github.com/GabrielFerreiraMendes/minusframework-ai)
+[minusframework-ai](https://github.com/minusframework/minusframework-ai)

@@ -268,5 +268,5 @@ Get-Content "C:\Dev\MinusFrameWork-Meta\README.md" -TotalCount 20
 Add right after the title:
 
 ```markdown
-[![CI](https://github.com/GabrielFerreiraMendes/minusframework/actions/workflows/ci.yml/badge.svg)](https://github.com/GabrielFerreiraMendes/minusframework/actions/workflows/ci.yml)
+[![CI](https://github.com/minusframework/minusframework/actions/workflows/ci.yml/badge.svg)](https://github.com/minusframework/minusframework/actions/workflows/ci.yml)
 ```

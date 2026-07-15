@@ -14,7 +14,7 @@ jobs:
       - name: Trigger meta-repo build
         run: |
           gh workflow run deploy-module.yml \
-            --repo GabrielFerreiraMendes/minusframework \
+            --repo minusframework/minusframework \
             --ref main \
             --field repo="${{ github.event.repository.name }}" \
             --field tag="${{ github.ref_name }}"

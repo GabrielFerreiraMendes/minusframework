@@ -90,7 +90,7 @@ mkdir -p services/feature-flags/sdk
 mkdir -p services/feature-flags/web/templates
 mkdir -p services/feature-flags/web/static
 cd services/feature-flags
-go mod init github.com/GabrielFerreiraMendes/minusframework/services/feature-flags
+go mod init github.com/minusframework/minusframework/services/feature-flags
 go get github.com/gin-gonic/gin
 go get github.com/jackc/pgx/v5
 go get github.com/golang-jwt/jwt/v5
@@ -219,7 +219,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 func main() {
@@ -486,7 +486,7 @@ package middleware
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 func APIKeyRequired(s *store.Store) gin.HandlerFunc {
@@ -517,8 +517,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/model"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 type EnvironmentHandler struct {
@@ -582,8 +582,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/model"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 type FlagHandler struct {
@@ -826,8 +826,8 @@ Add imports as needed.
 
 ```go
 import (
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/handler"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/middleware"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/handler"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/middleware"
 )
 
 // After r := gin.Default()
@@ -1032,8 +1032,8 @@ import (
     "github.com/gin-gonic/gin"
     "github.com/golang-jwt/jwt/v5"
     "github.com/gorilla/websocket"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/service"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/service"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 var upgrader = websocket.Upgrader{
@@ -1204,7 +1204,7 @@ func (h *WSHandler) readPump(client *service.Client) {
 
 ```go
 import (
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/service"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/service"
 )
 
 // After store initialization
@@ -1774,8 +1774,8 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/service"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/service"
 )
 
 type DashboardHandler struct {

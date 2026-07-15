@@ -43,7 +43,7 @@ import (
     "context"
     "log"
     "time"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 type Aggregator struct {
@@ -153,7 +153,7 @@ import (
     "context"
     "log"
     "time"
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
+    "github.com/minusframework/minusframework/services/telemetry/internal/store"
 )
 
 type Retention struct {
@@ -197,7 +197,7 @@ func (r *Retention) Run(ctx context.Context) {
 
 ```go
 import (
-    "github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/service"
+    "github.com/minusframework/minusframework/services/telemetry/internal/service"
 )
 
 // After db initialization

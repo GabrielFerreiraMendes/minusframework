@@ -28,7 +28,7 @@ mkdir -p services/feature-flags/sdk
 mkdir -p services/feature-flags/web/templates
 mkdir -p services/feature-flags/web/static
 cd services/feature-flags
-go mod init github.com/GabrielFerreiraMendes/minusframework/services/feature-flags
+go mod init github.com/minusframework/minusframework/services/feature-flags
 go get github.com/gin-gonic/gin
 go get github.com/jackc/pgx/v5
 go get github.com/golang-jwt/jwt/v5
@@ -157,7 +157,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
+    "github.com/minusframework/minusframework/services/feature-flags/internal/store"
 )
 
 func main() {

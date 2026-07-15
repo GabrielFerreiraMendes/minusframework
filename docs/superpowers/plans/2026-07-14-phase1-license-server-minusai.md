@@ -103,7 +103,7 @@ mkdir -p services/license-server/internal/store
 mkdir -p services/license-server/internal/middleware
 mkdir -p services/license-server/migrations
 cd services/license-server
-go mod init github.com/GabrielFerreiraMendes/minusframework/services/license-server
+go mod init github.com/minusframework/minusframework/services/license-server
 go get github.com/gin-gonic/gin
 go get github.com/jackc/pgx/v5
 go get github.com/golang-jwt/jwt/v5
@@ -208,7 +208,7 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
+    "github.com/minusframework/minusframework/services/license-server/internal/store"
 )
 
 func main() {
@@ -380,8 +380,8 @@ import (
     "time"
     "github.com/gin-gonic/gin"
     "github.com/golang-jwt/jwt/v5"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
+    "github.com/minusframework/minusframework/services/license-server/internal/model"
+    "github.com/minusframework/minusframework/services/license-server/internal/store"
 )
 
 type AuthHandler struct {
@@ -559,7 +559,7 @@ func (s *Store) UpsertUser(ctx context.Context, user *model.User) error {
 }
 ```
 
-Add import: `"github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/model"`
+Add import: `"github.com/minusframework/minusframework/services/license-server/internal/model"`
 
 - [ ] **Step 6: Wire routes in cmd/server/main.go**
 
@@ -571,7 +571,7 @@ r.GET("/auth/github/login", authHandler.LoginRedirect)
 r.GET("/auth/github/callback", authHandler.Callback)
 ```
 
-Add import: `"github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/handler"`
+Add import: `"github.com/minusframework/minusframework/services/license-server/internal/handler"`
 
 - [ ] **Step 7: Run the tests**
 
@@ -713,8 +713,8 @@ import (
     "net/http"
     "time"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
+    "github.com/minusframework/minusframework/services/license-server/internal/model"
+    "github.com/minusframework/minusframework/services/license-server/internal/store"
 )
 
 type LicenseHandler struct {
@@ -906,7 +906,7 @@ authorized.POST("/licenses/deactivate", licenseHandler.Deactivate)
 authorized.GET("/licenses/mine", licenseHandler.ListMine)
 ```
 
-Add import: `"github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/middleware"`
+Add import: `"github.com/minusframework/minusframework/services/license-server/internal/middleware"`
 
 - [ ] **Step 5: Run the tests**
 
@@ -1022,7 +1022,7 @@ import (
     "github.com/stripe/stripe-go/v76"
     "github.com/stripe/stripe-go/v76/checkout/session"
     "github.com/stripe/stripe-go/v76/customer"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/store"
+    "github.com/minusframework/minusframework/services/license-server/internal/store"
 )
 
 type SubscriptionHandler struct {
@@ -1124,7 +1124,7 @@ import (
     "github.com/gin-gonic/gin"
     "github.com/stripe/stripe-go/v76"
     "github.com/stripe/stripe-go/v76/webhook"
-    "github.com/GabrielFerreiraMendes/minusframework/services/license-server/internal/model"
+    "github.com/minusframework/minusframework/services/license-server/internal/model"
 )
 
 type WebhookHandler struct {
@@ -1254,7 +1254,7 @@ mkdir -p services/minusai-review/internal/store
 mkdir -p services/minusai-review/internal/middleware
 mkdir -p services/minusai-review/migrations
 cd services/minusai-review
-go mod init github.com/GabrielFerreiraMendes/minusframework/services/minusai-review
+go mod init github.com/minusframework/minusframework/services/minusai-review
 go get github.com/gin-gonic/gin
 go get github.com/jackc/pgx/v5
 go get github.com/golang-jwt/jwt/v5
@@ -1462,8 +1462,8 @@ import (
     "io"
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/model"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 type WebhookHandler struct {
@@ -1646,7 +1646,7 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 type ReviewHandler struct {
@@ -1740,8 +1740,8 @@ import (
     "net/http"
     "os"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/handler"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/handler"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 func main() {
@@ -2004,9 +2004,9 @@ import (
     "log"
     "os"
     "time"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/service"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/model"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/service"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 func main() {
@@ -2164,8 +2164,8 @@ import (
     "os"
     "os/exec"
     "time"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/model"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/model"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 func main() {
@@ -2276,7 +2276,7 @@ package handler
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "github.com/GabrielFerreiraMendes/minusframework/services/minusai-review/internal/store"
+    "github.com/minusframework/minusframework/services/minusai-review/internal/store"
 )
 
 type DashboardHandler struct {
