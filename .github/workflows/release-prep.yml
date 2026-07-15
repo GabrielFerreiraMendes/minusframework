@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v7
       - name: Check CI setup script exists
         run: |
-          if [ ! -f ci-setup.ps1 ]; then
-            echo "ERROR: ci-setup.ps1 not found!"
+          if [ ! -f scripts/ci/ci-setup.ps1 ]; then
+            echo "ERROR: scripts/ci/ci-setup.ps1 not found!"
             exit 1
           fi
           echo "CI setup script is present."

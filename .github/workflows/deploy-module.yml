@@ -19,7 +19,7 @@ jobs:
       - shell: powershell
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: meta\ci-setup.ps1 -Token $env:GH_PAT
+        run: meta\scripts\ci\ci-setup.ps1 -Token $env:GH_PAT
 
       - shell: powershell
         run: |
@@ -44,4 +44,4 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          & "${{ github.workspace }}\meta\Installer\build-module.ps1" -Module "${{ inputs.repo }}" -Tag "${{ inputs.tag }}" -RootDir "${{ github.workspace }}\meta" -Token $env:GH_PAT
+          & "${{ github.workspace }}\meta\scripts\installer\build-module.ps1" -Module "${{ inputs.repo }}" -Tag "${{ inputs.tag }}" -RootDir "${{ github.workspace }}\meta" -Token $env:GH_PAT
