@@ -399,7 +399,7 @@ var
   LEnabled: Boolean;
   LRolloutPercentage: Integer;
 begin
-  LKey := AJSON.GetValue<string>('key');
+  LKey := AJSON.GetValue<string>('flag');
   LEnabled := AJSON.GetValue<Boolean>('enabled');
 
   if not AJSON.TryGetValue<string>('variant', LVariant) then
@@ -415,7 +415,7 @@ procedure TFeatureFlags.HandleFlagDeleted(const AJSON: TJSONObject);
 var
   LKey: string;
 begin
-  LKey := AJSON.GetValue<string>('key');
+  LKey := AJSON.GetValue<string>('flag');
   FCache.Remove(LKey);
   DoOnFlagChanged(LKey, False);
 end;
@@ -437,6 +437,13 @@ var
 begin
   if FDestroying then
     Exit;
+
+  if Assigned(FReconnectThread) then
+  begin
+    FReconnectThread.FClient := nil;
+    FReconnectThread.Terminate;
+    FReconnectThread := nil;
+  end;
 
   Inc(FReconnectAttempt);
   LDelay := 1000 * (1 shl (FReconnectAttempt - 1));
