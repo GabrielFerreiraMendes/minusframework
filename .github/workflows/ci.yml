@@ -59,9 +59,15 @@ jobs:
       - name: Healthcheck post-deploy
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          sleep 10
-          curl -s -o /dev/null -w "%{http_code}" "https://gabrielferreiramendes.github.io/minusframework/" | grep 200
-          echo "Site is live and returning 200"
+          sleep 30
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "https://minusframework.dev" 2>/dev/null || echo "000")
+            if [ "$code" = "200" ]; then echo "Site is live"; exit 0; fi
+            echo "Attempt $i: HTTP $code, retrying..."
+            sleep 10
+          done
+          echo "Site not responding after 3 attempts"
+          exit 1
 
   deploy-preview:
     if: github.event_name == 'pull_request'
@@ -86,7 +92,7 @@ jobs:
         with:
           script: |
             const prNumber = context.issue.number;
-            const previewUrl = `https://gabrielferreiramendes.github.io/minusframework/pr-${prNumber}/`;
+            const previewUrl = `https://minusframework.github.io/minusframework/pr-${prNumber}/`;
             github.rest.issues.createComment({
               issue_number: prNumber,
               owner: context.repo.owner,
