@@ -2,7 +2,6 @@ package store
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
 	"github.com/jackc/pgx/v5"
@@ -81,11 +80,11 @@ func (s *Store) GetLicenseKeyByUserID(ctx context.Context, userID string) (strin
 	return licenseKey, err
 }
 
-func (s *Store) GetFlagByID(ctx context.Context, id string) (*model.Flag, error) {
+func (s *Store) GetFlagByID(ctx context.Context, id, licenseKey string) (*model.Flag, error) {
 	f := &model.Flag{}
 	err := s.pool.QueryRow(ctx,
 		`SELECT f.id, f.key, f.name, f.description, f.flag_type, f.default_variant, f.created_at, f.updated_at
-		 FROM flags f WHERE f.id = $1`, id,
+		 FROM flags f WHERE f.id = $1 AND f.license_key = $2`, id, licenseKey,
 	).Scan(&f.ID, &f.Key, &f.Name, &f.Description, &f.FlagType, &f.DefaultVariant, &f.CreatedAt, &f.UpdatedAt)
 	if err != nil {
 		return nil, err
@@ -118,11 +117,8 @@ func (s *Store) ListFlags(ctx context.Context, licenseKey, environmentID string)
 		f := &model.Flag{}
 		if environmentID != "" {
 			var fvID *string
-			var enabled *bool
-			var variantValue *json.RawMessage
-			var rollout *int
 			rows.Scan(&f.ID, &f.Key, &f.Name, &f.Description, &f.FlagType, &f.DefaultVariant, &f.CreatedAt, &f.UpdatedAt,
-				&fvID, &enabled, &variantValue, &rollout)
+				&fvID, &f.Enabled, &f.VariantValue, &f.RolloutPercentage)
 		} else {
 			rows.Scan(&f.ID, &f.Key, &f.Name, &f.Description, &f.FlagType, &f.DefaultVariant, &f.CreatedAt, &f.UpdatedAt)
 		}
@@ -133,6 +129,15 @@ func (s *Store) ListFlags(ctx context.Context, licenseKey, environmentID string)
 
 func (s *Store) CreateFlag(ctx context.Context, f *model.Flag) error {
 	return s.pool.QueryRow(ctx, `INSERT INTO flags (license_key, key, name, description, flag_type, default_variant) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id, created_at, updated_at`, f.LicenseKey, f.Key, f.Name, f.Description, f.FlagType, f.DefaultVariant).Scan(&f.ID, &f.CreatedAt, &f.UpdatedAt)
+}
+
+func (s *Store) FlagKeyExists(ctx context.Context, licenseKey, key string) (bool, error) {
+	var exists bool
+	err := s.pool.QueryRow(ctx,
+		`SELECT EXISTS(SELECT 1 FROM flags WHERE license_key = $1 AND key = $2)`,
+		licenseKey, key,
+	).Scan(&exists)
+	return exists, err
 }
 
 func (s *Store) UpdateFlag(ctx context.Context, f *model.Flag) error {

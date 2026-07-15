@@ -51,6 +51,15 @@ func (h *FlagHandler) Create(c *gin.Context) {
 		Key: req.Key, Name: req.Name, Description: req.Description,
 		FlagType: req.FlagType, DefaultVariant: req.DefaultVariant,
 	}
+	exists, err := h.store.FlagKeyExists(c.Request.Context(), licenseKey, req.Key)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to check flag key"})
+		return
+	}
+	if exists {
+		c.JSON(http.StatusConflict, gin.H{"error": "flag key already exists"})
+		return
+	}
 	if err := h.store.CreateFlag(c.Request.Context(), flag); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create flag"})
 		return
@@ -113,7 +122,7 @@ func (h *FlagHandler) Toggle(c *gin.Context) {
 	if req.RolloutPercentage != nil {
 		rollout = *req.RolloutPercentage
 	}
-	flag, err := h.store.GetFlagByID(c.Request.Context(), id)
+	flag, err := h.store.GetFlagByID(c.Request.Context(), id, licenseKey)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "flag not found"})
 		return

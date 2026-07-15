@@ -13,15 +13,18 @@ const (
 )
 
 type Flag struct {
-	ID             string    `json:"id"`
-	LicenseKey     string    `json:"-"`
-	Key            string    `json:"key"`
-	Name           string    `json:"name"`
-	Description    string    `json:"description,omitempty"`
-	FlagType       FlagType  `json:"flag_type"`
-	DefaultVariant string    `json:"default_variant,omitempty"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
+	ID                string           `json:"id"`
+	LicenseKey        string           `json:"-"`
+	Key               string           `json:"key"`
+	Name              string           `json:"name"`
+	Description       string           `json:"description,omitempty"`
+	FlagType          FlagType         `json:"flag_type"`
+	DefaultVariant    string           `json:"default_variant,omitempty"`
+	Enabled           *bool            `json:"enabled,omitempty"`
+	VariantValue      *json.RawMessage `json:"variant_value,omitempty"`
+	RolloutPercentage *int             `json:"rollout_percentage,omitempty"`
+	CreatedAt         time.Time        `json:"created_at"`
+	UpdatedAt         time.Time        `json:"updated_at"`
 }
 
 type FlagValue struct {
