@@ -36,7 +36,8 @@ func (h *DashboardHandler) Flags(c *gin.Context) {
 	envID := c.Query("environment_id")
 	flags, _ := h.store.ListFlags(c.Request.Context(), licenseKey, envID)
 	envs, _ := h.store.ListEnvironments(c.Request.Context(), licenseKey)
-	c.HTML(http.StatusOK, "flags.html", gin.H{"flags": flags, "environments": envs, "current_env": envID})
+	authToken := c.GetHeader("Authorization")
+	c.HTML(http.StatusOK, "flags.html", gin.H{"flags": flags, "environments": envs, "current_env": envID, "auth_token": authToken})
 }
 
 func (h *DashboardHandler) AuditLog(c *gin.Context) {

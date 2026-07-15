@@ -34,6 +34,12 @@ th { background: #f8f9fa; font-weight: 600; font-size: 0.85rem; text-transform: 
 .status.active { background: #d4edda; color: #155724; }
 .status.inactive { background: #e9ecef; color: #495057; }
 
+.toggle-btn { padding: 0.3rem 0.75rem; border: none; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+.toggle-btn.active { background: #d4edda; color: #155724; }
+.toggle-btn.inactive { background: #e9ecef; color: #495057; }
+.toggle-btn:hover { opacity: 0.85; }
+.toggle-btn:disabled { opacity: 0.5; cursor: default; }
+
 .btn { display: inline-block; padding: 0.5rem 1rem; background: #1a1a2e; color: white; text-decoration: none; border-radius: 4px; font-size: 0.85rem; }
 .btn:hover { background: #16213e; }
 
