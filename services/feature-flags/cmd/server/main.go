@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/handler"
 	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/middleware"
+	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/service"
 	"github.com/GabrielFerreiraMendes/minusframework/services/feature-flags/internal/store"
 )
 
@@ -29,12 +30,19 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
 
+	hub := service.NewHub()
+
 	addr := os.Getenv("LISTEN_ADDR")
 	if addr == "" {
 		addr = ":8083"
 	}
 
 	jwtSecret := os.Getenv("JWT_SECRET")
+
+	wsHandler := handler.NewWSHandler(db, hub)
+	wsAPI := r.Group("/api/v1", middleware.APIKeyRequired(db))
+	wsAPI.POST("/ws/token", wsHandler.IssueToken)
+	r.GET("/ws", wsHandler.HandleWebSocket)
 
 	api := r.Group("/api/v1", middleware.JWTAuthRequired(jwtSecret))
 	{
