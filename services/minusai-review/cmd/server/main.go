@@ -41,6 +41,16 @@ func main() {
 		api.GET("/reviews", rh.List)
 	}
 
+	r.LoadHTMLGlob("web/templates/*")
+	r.Static("/static", "./web/static")
+
+	dashboard := r.Group("/dashboard", middleware.AuthRequired(jwtSecret))
+	{
+		dh := handler.NewDashboardHandler(db)
+		dashboard.GET("/", dh.Index)
+		dashboard.GET("/reviews/:id", dh.ReviewDetail)
+	}
+
 	addr := os.Getenv("LISTEN_ADDR")
 	if addr == "" {
 		addr = ":8081"
