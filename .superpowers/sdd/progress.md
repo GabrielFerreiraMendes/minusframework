@@ -35,3 +35,23 @@ Task 15: Fix SVG logo (remove redundant text, use pure icon) — complete
 Task 16: Prevent navbar title truncation (flex-shrink: 0) — complete
 Task 17: Adjust navbar vertical padding (0.75rem top/bottom, 0.5rem item padding) — complete
 Build: PASS (pt-BR + en, zero warnings)
+---
+## Phase 2 — Telemetry Cloud Service
+Task 1: complete (commits 3316a7d5..d6ad5ce5, review clean after fix)
+Task 2: complete (commits d6ad5ce5..bc59639f, review clean after fix)
+Task 3: complete (commits bc59639f..6b0bedd1, review clean after fix)
+Task 4: complete (commits 6b0bedd1..380dd808, review clean, added missing unique constraints)
+Task 5: complete (commit e4a9cf42, Delphi Cloud Exporter SDK)
+Task 6: complete (commit 004bc135, integration tests)
+Feature Flags Task 1: complete (commit 9fea9efe, scaffold + schema, build verified)
+Feature Flags Task 2: complete (commits 9fea9efe..49c21371, review clean after fix)
+Feature Flags Task 3: complete (commit 5fafa39, WebSocket hub, build passed)
+Feature Flags Task 4: complete (commit 35f4a521, Redis + evaluator, build passed)
+Feature Flags Task 5: complete (commit cb19d82e, Delphi SDK)
+Feature Flags Task 6: complete (commit b0a1e13d, dashboard UI, build passed)
+Feature Flags Task 7: complete (commit 3375a3e8, integration tests)
+---
+## Phase 2 Complete
+- Telemetry Cloud Service: 6 tasks, builds verified
+- Feature Flags Cloud Service: 7 tasks, builds verified
+- Total commits: 14

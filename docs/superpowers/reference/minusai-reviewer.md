@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: MinusAI Code Review
-        uses: GabrielFerreiraMendes/minusframework-ai/.github/actions/review-pr@main
+        uses: minusframework/minusframework-ai/.github/actions/review-pr@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ github.event.pull_request.number }}

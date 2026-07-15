@@ -33,4 +33,4 @@ end;
 
 ## Repositório
 
-[minusframework-featureflags](https://github.com/GabrielFerreiraMendes/minusframework-featureflags)
+[minusframework-featureflags](https://github.com/minusframework/minusframework-featureflags)

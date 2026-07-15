@@ -1,0 +1,241 @@
+# Final Branch Review ó Phase 1+2
+**Base:** 2ce9760
+**Head:** 3375a3e8
+**Branch:** feat/phase1-license-server-minusai
+
+## Commits
+3375a3e8 test: add feature flags integration tests
+b0a1e13d feat: add feature flags dashboard UI
+cb19d82e feat: add TFeatureFlags Delphi WebSocket client SDK
+6e3d5169 feat: add 'In+°cio' nav item and prevent title/logo overlap on smaller screens
+35f4a521 feat: add rollout evaluator and Redis pub/sub broadcast
+5fafa39b feat: add WebSocket hub with connection token auth
+49c21371 fix: resolve JWT license_key lookup and ListFlags environment filter
+9d3de943 feat: add REST API for feature flags and environments CRUD
+9fea9efe feat: scaffold Feature Flags service with PostgreSQL schema
+004bc135 test: add telemetry integration test suite
+e4a9cf42 feat: add TCloudExporter Delphi SDK for telemetry cloud ingestion
+380dd808 fix: add unique constraints to aggregate tables for ON CONFLICT support
+c4023684 feat: add hourly aggregation and retention cleanup
+6b0bedd1 fix: resolve dashboard JWT claim and Dockerfile issues
+75c05723 feat: add telemetry dashboard with trace explorer and service map
+bc59639f fix: correct test compile error and error rate calculation
+e2352921 feat: add OTLP ingestion endpoints with API Key auth
+d6ad5ce5 fix: align go.mod version with Dockerfile builder image (go 1.22)
+f9c198b3 feat: scaffold Telemetry service with PostgreSQL schema
+3316a7d5 fix: resolve code review issues - JWT claim, diff parse, OAuth CSRF, route auth, timeout, dashboard
+2968ed4a test: add end-to-end integration test suite
+8f711c72 feat: add license validation to installer setup
+18d3e3e6 feat: add MinusAI Review dashboard MVP
+58ca4915 feat: add Delphi worker dispatcher and Windows container setup
+1c9d7dc7 feat: add LLM service for semantic code review (OpenAI)
+6ddec002 feat: add MinusAI Review API with webhook ingestion and job queue
+65e2c181 feat: add Stripe integration and subscription management
+7aef9a4f feat: add license key generation, validation, and device activation
+82774115 feat: add GitHub OAuth login and JWT auth to License Server
+724856a1 feat: scaffold License Server with PostgreSQL schema
+fb620744 chore: update actions/checkout@v4 ‘Â∆ @v7
+8aa55c4f feat: add reusable workflow templates and sync script
+68b2e339 docs: add MinusAI Reviewer reference documentation
+9c3b2139 docs: consolidar documentacao apos release v0.1.0
+55320b87 chore: limpar artefatos, corrigir CI, atualizar ROADMAP e RELEASE_NOTES para v0.1.0
+fabf9857 fix: Logo visivel em modo claro e escuro, texto como HTML no README
+0da5b0f0 docs: expand README with module table, structure, CI/CD, and contribution guide
+f9468172 fix: restore text in SVG logo and set footer text color to white
+64a278d8 fix: use dynamic baseUrl via BASE_URL env var for PR preview deployments
+98b15431 chore: update SDD progress ledger with site revitalization tasks
+07ca41bf chore: add site revitalization plans and design specs
+ba0d0799 fix: simplify logo SVG to pure icon eliminating redundant text and preventing truncation
+40de0c04 docs: simplify README to minimal meta-repo format with logo and CI badge
+ffedba72 feat: add custom 404 page, CNAME, and robots.txt for GitHub Pages
+f788a043 ci: optimize pipeline with caching, deploy preview, concurrency, and post-deploy healthcheck
+71cf5d99 docs: rewrite AI, Telemetry, and Messaging overviews with concise examples and licensing notes
+2d140448 docs: add tier badges (Free/Pro/Enterprise) across 23 documentation pages
+0977f33e feat: redesign homepage with hero section, pricing toggle, responsive grid, and UI animations
+910854c0 feat: configure Docusaurus with i18n (en), sidebar categories, sitemap, and SEO
+
+## Files changed
+ .github/workflows/ci.yml                           |   88 +-
+ .github/workflows/deploy-module.yml                |    2 +-
+ .github/workflows/release-installer.yml            |    2 +-
+ .github/workflows/release-prep.yml                 |   24 +-
+ .github/workflows/stale-branches.yml               |    2 +-
+ .github/workflows/templates/build.yml              |   20 +
+ .github/workflows/templates/release.yml            |   22 +
+ .github/workflows/templates/review-pr.yml          |   22 +
+ .gitignore                                         |    5 +-
+ .superpowers/sdd/progress.md                       |   29 +
+ .../sdd/review-3316a7d5..d6ad5ce5.fix.diff         |  284 +++
+ .superpowers/sdd/review-3316a7d5..f9c198b3.diff    |  283 +++
+ .superpowers/sdd/review-d6ad5ce5..e2352921.diff    |  692 +++++
+ .superpowers/sdd/task-1-brief.md                   |  268 +-
+ .superpowers/sdd/task-1-report.md                  |   67 +-
+ .superpowers/sdd/task-11-report.md                 |   49 +
+ .superpowers/sdd/task-2-brief.md                   |  543 ++--
+ .superpowers/sdd/task-2-report.md                  |   71 +
+ .superpowers/sdd/task-3-brief.md                   |  302 +++
+ .superpowers/sdd/task-3-report.md                  |   77 +
+ .superpowers/sdd/task-4-brief.md                   |  230 ++
+ .superpowers/sdd/task-4-report.md                  |   34 +
+ .superpowers/sdd/task-5-brief.md                   |  220 ++
+ .superpowers/sdd/task-5-report.md                  |   29 +
+ .superpowers/sdd/task-6-brief.md                   |  161 ++
+ .superpowers/sdd/task-6-report.md                  |    2 +
+ .superpowers/sdd/task-7-brief.md                   |  252 ++
+ .superpowers/sdd/task-7-report.md                  |   53 +
+ .superpowers/sdd/task-8-brief.md                   |  423 +++
+ .superpowers/sdd/task-8-report.md                  |   79 +
+ Installer/MinusFramework.iss                       |   95 +
+ README.md                                          |  187 +-
+ RELEASE_NOTES.md                                   |   61 +-
+ ROADMAP.md                                         |   11 +-
+ docs/ai/index.md                                   |  169 +-
+ docs/ai/mcp-server.md                              |    2 +
+ docs/ai/tools.md                                   |    2 +
+ docs/cli/commands.md                               |   12 +-
+ docs/cli/index.md                                  |   18 +-
+ docs/cli/make-entity.md                            |    8 +-
+ docs/cli/new-api.md                                |    6 +-
+ docs/extensions/audit.md                           |    2 +
+ docs/extensions/cache.md                           |    2 +
+ docs/extensions/index.md                           |    5 +-
+ docs/extensions/soft-delete.md                     |    2 +
+ docs/getting-started.md                            |    6 +-
+ docs/licensing.md                                  |    4 +-
+ docs/messaging/config.md                           |    2 +
+ docs/messaging/index.md                            |  168 +-
+ docs/messaging/sagas.md                            |    2 +
+ docs/migrator/cli.md                               |    2 +
+ docs/migrator/dll.md                               |   41 +
+ docs/migrator/index.md                             |    2 +
+ docs/modules/AI/index.md                           |   19 +
+ docs/modules/Core/index.md                         |   13 +
+ docs/modules/FeatureFlags/CHANGELOG.md             |    4 +-
+ docs/modules/FeatureFlags/index.md                 |   33 +-
+ docs/orm/criteria.md                               |    2 +
+ docs/orm/crud.md                                   |    2 +
+ docs/orm/entities.md                               |    2 +
+ docs/orm/index.md                                  |    2 +
+ docs/orm/providers.md                              |    2 +
+ docs/orm/unit-of-work.md                           |    2 +
+ .../plans/2026-07-04-documentation-update.md       |  452 ++++
+ .../plans/2026-07-04-github-pages-setup.md         |  272 ++
+ .../plans/2026-07-04-ui-ux-modernization.md        |  518 ++++
+ .../2026-07-13-documentation-consolidation.md      |   82 +
+ .../2026-07-13-pr-reviewer-bot-implementation.md   |  693 +++++
+ .../2026-07-14-phase1-license-server-minusai.md    | 2687 ++++++++++++++++++++
+ ...026-07-15-phase2-feature-flags-cloud-service.md | 2261 ++++++++++++++++
+ .../2026-07-15-phase2-telemetry-cloud-service.md   | 1626 ++++++++++++
+ docs/superpowers/reference/minusai-reviewer.md     |   90 +
+ .../specs/2026-07-04-site-revitalization-design.md |  103 +
+ ...026-07-13-documentation-consolidation-design.md |   40 +
+ .../specs/2026-07-13-pr-reviewer-bot-design.md     |   67 +
+ .../2026-07-14-hybrid-business-model-design.md     |  188 ++
+ ...026-07-15-feature-flags-cloud-service-design.md |  279 ++
+ .../2026-07-15-telemetry-cloud-service-design.md   |  246 ++
+ docs/telemetry/index.md                            |  109 +-
+ docusaurus.config.ts                               |   31 +-
+ i18n/en/docusaurus-theme-classic/footer.json       |   46 +
+ i18n/en/docusaurus-theme-classic/navbar.json       |   26 +
+ scripts/installer-license-check.ps1                |   36 +
+ services/docker-compose.yml                        |   72 +
+ services/feature-flags/Dockerfile                  |   13 +
+ services/feature-flags/Makefile                    |   11 +
+ services/feature-flags/cmd/server/main.go          |   80 +
+ services/feature-flags/go.mod                      |   48 +
+ services/feature-flags/go.sum                      |  121 +
+ .../feature-flags/internal/handler/dashboard.go    |   51 +
+ .../feature-flags/internal/handler/environments.go |   63 +
+ services/feature-flags/internal/handler/flags.go   |  129 +
+ services/feature-flags/internal/handler/ws.go      |  134 +
+ .../feature-flags/internal/middleware/apikey.go    |   25 +
+ services/feature-flags/internal/middleware/auth.go |   39 +
+ .../feature-flags/internal/model/environment.go    |   11 +
+ services/feature-flags/internal/model/flag.go      |   44 +
+ .../feature-flags/internal/service/evaluator.go    |   30 +
+ services/feature-flags/internal/service/hub.go     |  145 ++
+ services/feature-flags/internal/store/postgres.go  |  182 ++
+ services/feature-flags/migrations/001_initial.sql  |   38 +
+ .../feature-flags/migrations/002_audit_log.sql     |   13 +
+ .../feature-flags/sdk/MF.FeatureFlags.Client.pas   |  539 ++++
+ services/feature-flags/web/static/style.css        |   40 +
+ services/feature-flags/web/templates/audit.html    |   44 +
+ services/feature-flags/web/templates/flags.html    |   56 +
+ services/feature-flags/web/templates/index.html    |   35 +
+ services/integration-test/docker-compose.test.yml  |   50 +
+ services/integration-test/test_feature_flags.ps1   |   60 +
+ services/integration-test/test_flow.ps1            |   14 +
+ services/integration-test/test_flow.sh             |   44 +
+ services/integration-test/test_telemetry.ps1       |   73 +
+ services/license-server/Dockerfile                 |   12 +
+ services/license-server/cmd/server/main.go         |   62 +
+ services/license-server/go.mod                     |   46 +
+ services/license-server/go.sum                     |  110 +
+ services/license-server/internal/handler/auth.go   |  130 +
+ .../license-server/internal/handler/license.go     |  197 ++
+ .../internal/handler/subscription.go               |  122 +
+ .../license-server/internal/handler/webhook.go     |  117 +
+ .../license-server/internal/middleware/auth.go     |   43 +
+ services/license-server/internal/model/license.go  |   25 +
+ .../license-server/internal/model/subscription.go  |   17 +
+ services/license-server/internal/model/user.go     |   13 +
+ services/license-server/internal/store/postgres.go |  152 ++
+ services/license-server/migrations/001_initial.sql |   52 +
+ services/minusai-review/cmd/dispatcher/main.go     |   65 +
+ services/minusai-review/cmd/server/main.go         |   60 +
+ services/minusai-review/cmd/worker/main.go         |   78 +
+ services/minusai-review/go.mod                     |   45 +
+ services/minusai-review/go.sum                     |  102 +
+ .../minusai-review/internal/handler/dashboard.go   |   32 +
+ services/minusai-review/internal/handler/review.go |   46 +
+ .../minusai-review/internal/handler/webhook.go     |   76 +
+ .../minusai-review/internal/middleware/auth.go     |   52 +
+ services/minusai-review/internal/model/job.go      |   25 +
+ services/minusai-review/internal/model/review.go   |   31 +
+ services/minusai-review/internal/service/github.go |   56 +
+ services/minusai-review/internal/service/llm.go    |  127 +
+ services/minusai-review/internal/store/postgres.go |  145 ++
+ services/minusai-review/migrations/001_initial.sql |   32 +
+ services/minusai-review/web/static/style.css       |   13 +
+ services/minusai-review/web/templates/index.html   |   38 +
+ services/minusai-review/web/templates/review.html  |   25 +
+ services/minusai-review/worker/Dockerfile          |    5 +
+ .../minusai-review/worker/Dockerfile.dispatcher    |   12 +
+ services/minusai-review/worker/run.ps1             |   29 +
+ services/telemetry/Dockerfile                      |   13 +
+ services/telemetry/Makefile                        |   11 +
+ services/telemetry/cmd/server/main.go              |   77 +
+ services/telemetry/go.mod                          |   45 +
+ services/telemetry/go.sum                          |  102 +
+ services/telemetry/internal/handler/dashboard.go   |   93 +
+ services/telemetry/internal/handler/ingest.go      |   68 +
+ services/telemetry/internal/handler/ingest_test.go |  222 ++
+ services/telemetry/internal/middleware/apikey.go   |   67 +
+ services/telemetry/internal/model/metric.go        |   14 +
+ services/telemetry/internal/model/span.go          |   35 +
+ services/telemetry/internal/service/aggregator.go  |   94 +
+ .../telemetry/internal/service/aggregator_test.go  |   13 +
+ services/telemetry/internal/service/retention.go   |   44 +
+ .../telemetry/internal/service/retention_test.go   |   12 +
+ services/telemetry/internal/store/postgres.go      |  149 ++
+ services/telemetry/migrations/001_spans.sql        |   37 +
+ services/telemetry/migrations/002_metrics.sql      |   24 +
+ services/telemetry/migrations/003_constraints.sql  |    2 +
+ services/telemetry/sdk/MF.Telemetry.Cloud.pas      |  200 ++
+ services/telemetry/web/static/style.css            |   40 +
+ services/telemetry/web/templates/index.html        |   36 +
+ services/telemetry/web/templates/services.html     |   32 +
+ services/telemetry/web/templates/traces.html       |   47 +
+ sidebars.ts                                        |   39 +-
+ src/components/HighlightCards/index.tsx            |    2 +-
+ src/css/custom.css                                 |  126 +-
+ src/pages/index.tsx                                |   56 +-
+ src/pages/pricing.tsx                              |  194 +-
+ static/404.html                                    |   48 +
+ static/CNAME                                       |    2 +
+ static/img/logo-icon-dark.svg                      |    4 +
+ static/img/logo-icon.svg                           |    4 +
+ static/img/logo.svg                                |   24 +-
+ static/robots.txt                                  |    3 +
+ sync-workflows.ps1                                 |   85 +
+ 183 files changed, 20613 insertions(+), 924 deletions(-)

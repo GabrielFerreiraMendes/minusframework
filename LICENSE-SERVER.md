@@ -2,7 +2,7 @@
 
 Este diretório contém o código do License Server, movido para repositório privado.
 
-**Repositório:** `https://github.com/GabrielFerreiraMendes/minusframework-license-server` (privado)
+**Repositório:** `https://github.com/minusframework/minusframework-license-server` (privado)
 
 O servidor gera chaves de licença RSA-2048 para os tiers Free/Pro/Enterprise.
 Está rodando como serviço Windows em `http://localhost:3456`.
