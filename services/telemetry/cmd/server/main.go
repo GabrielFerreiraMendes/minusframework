@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/handler"
@@ -31,16 +30,7 @@ func main() {
 	go agg.Start(ctx)
 
 	ret := service.NewRetention(db)
-	go func() {
-		ticker := time.NewTicker(24 * time.Hour)
-		defer ticker.Stop()
-		for {
-			select {
-			case <-ticker.C:
-				ret.Run(ctx)
-			}
-		}
-	}()
+	go ret.Start(ctx)
 
 	r := gin.Default()
 	r.LoadHTMLGlob("web/templates/*")
