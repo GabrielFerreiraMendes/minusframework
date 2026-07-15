@@ -139,6 +139,11 @@ func (s *Store) GetLicenseKeyByUserID(ctx context.Context, userID string) (strin
 	return licenseKey, err
 }
 
+func (s *Store) Exec(ctx context.Context, sql string, args ...interface{}) (int64, error) {
+	tag, err := s.pool.Exec(ctx, sql, args...)
+	return tag.RowsAffected(), err
+}
+
 func (s *Store) Query(ctx context.Context, sql string, args ...interface{}) (pgx.Rows, error) {
 	return s.pool.Query(ctx, sql, args...)
 }

@@ -5,9 +5,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/handler"
 	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/middleware"
+	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/service"
 	"github.com/GabrielFerreiraMendes/minusframework/services/telemetry/internal/store"
 )
 
@@ -23,6 +26,21 @@ func main() {
 		log.Fatalf("failed to connect to database: %v", err)
 	}
 	defer db.Close()
+
+	agg := service.NewAggregator(db)
+	go agg.Start(ctx)
+
+	ret := service.NewRetention(db)
+	go func() {
+		ticker := time.NewTicker(24 * time.Hour)
+		defer ticker.Stop()
+		for {
+			select {
+			case <-ticker.C:
+				ret.Run(ctx)
+			}
+		}
+	}()
 
 	r := gin.Default()
 	r.LoadHTMLGlob("web/templates/*")
