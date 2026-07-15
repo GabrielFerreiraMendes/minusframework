@@ -29,3 +29,12 @@ services:
       LISTEN_ADDR: ":8081"
       JWT_SECRET: test-secret
       GITHUB_APP_TOKEN: test-token
+
+  telemetry:
+    build: ../telemetry
+    ports:
+      - "9082:8082"
+    environment:
+      DATABASE_URL: postgres://test:test@postgres:5432/minusframework_test?sslmode=disable
+      LISTEN_ADDR: ":8082"
+      JWT_SECRET: test-secret
