@@ -30,7 +30,7 @@ const PLANS: PricingPlan[] = [
     ],
   },
   {
-    name: 'Pro', price: { monthly: 29, yearly: 197 }, license: 'Perpétua', devs: '1 desenvolvedor',
+    name: 'Pro', price: { monthly: 49, yearly: 397 }, license: 'Perpétua', devs: '1 desenvolvedor',
     badge: 'pro', highlighted: true,
     features: [
       { name: 'MinusORM (SQLite)', included: true },
@@ -45,7 +45,7 @@ const PLANS: PricingPlan[] = [
     ],
   },
   {
-    name: 'Enterprise', price: { monthly: 69, yearly: 497 }, license: 'Perpétua', devs: 'até 5 por bloco',
+    name: 'Enterprise', price: { monthly: 99, yearly: 797 }, license: 'Perpétua', devs: 'até 5 por bloco',
     badge: 'enterprise',
     features: [
       { name: 'MinusORM (SQLite)', included: true },
@@ -153,7 +153,7 @@ export default function Pricing(): React.ReactElement {
           <h2>Pro</h2>
           <p>Inclui ORM multi-banco, Mensageria, Feature Flags e Extensions.</p>
           <ul>
-            <li><strong>R$ 197/ano</strong> por desenvolvedor</li>
+            <li><strong>R$ 397/ano</strong> por desenvolvedor</li>
             <li>Licença perpétua</li>
             <li>12 meses de atualizações e suporte</li>
             <li>Renovação anual opcional</li>
@@ -164,7 +164,7 @@ export default function Pricing(): React.ReactElement {
           <h2>Enterprise</h2>
           <p>Tudo do Pro mais Telemetria, AI/MCP Server e suporte prioritário.</p>
           <ul>
-            <li><strong>R$ 497/ano</strong> por bloco de até 5 desenvolvedores</li>
+            <li><strong>R$ 797/ano</strong> por bloco de até 5 desenvolvedores</li>
             <li>Licença perpétua</li>
             <li>12 meses de atualizações e suporte</li>
             <li>Renovação anual opcional</li>

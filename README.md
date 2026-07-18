@@ -90,8 +90,8 @@ MinusFrameWork-Meta/
 | Plano | Acesso | Preço |
 |-------|--------|-------|
 | **Free** | ORM, Migrator, CLI | MIT — gratuito |
-| **Pro** | + Feature Flags, Messaging, Extensions | R$ 29/mês ou R$ 197/ano |
-| **Enterprise** | + Telemetria, AI | R$ 69/mês ou R$ 497/ano |
+| **Pro** | + Feature Flags, Messaging, Extensions | R$ 49/mês ou R$ 397/ano |
+| **Enterprise** | + Telemetria, AI | R$ 99/mês ou R$ 797/ano |
 
 📋 **Licenciamento**: Consulte [LICENSE](./LICENSE) e [LICENSE-SERVER.md](./LICENSE-SERVER.md) para detalhes completos.
 
